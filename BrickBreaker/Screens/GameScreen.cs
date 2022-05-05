@@ -92,6 +92,8 @@ namespace BrickBreaker
 
             // start the game engine loop
             gameTimer.Enabled = true;
+
+            pauseLabel.Text = "";
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -110,7 +112,7 @@ namespace BrickBreaker
                     {
                         if (escunpressed == true)
                         {
-                            pauseTestLabel.Text = "paused";
+                            pauseLabel.Text = "paused";
                             gameTimer.Stop();
                             paused = true;
                             escunpressed = false;
@@ -120,7 +122,7 @@ namespace BrickBreaker
                     {
                         if (escunpressed == true)
                         {
-                            pauseTestLabel.Text = "";
+                            pauseLabel.Text = "";
                             gameTimer.Start();
                             paused = false;
                             escunpressed = false;
@@ -150,8 +152,6 @@ namespace BrickBreaker
                     break;
             }
         }
-
-
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -228,6 +228,9 @@ namespace BrickBreaker
             // Draws paddle
             paddleBrush.Color = paddle.colour;
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+
+            //display lives
+            livesLabel.Text = $"Lives: {lives}";
 
             // Draws blocks
             foreach (Block b in blocks)

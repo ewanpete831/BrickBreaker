@@ -30,7 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
-            this.pauseTestLabel = new System.Windows.Forms.Label();
+            this.pauseLabel = new System.Windows.Forms.Label();
+            this.livesLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -39,23 +40,36 @@
             this.gameTimer.Interval = 1;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
-            // pauseTestLabel
+            // pauseLabel
             // 
-            this.pauseTestLabel.AutoSize = true;
-            this.pauseTestLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pauseTestLabel.ForeColor = System.Drawing.Color.White;
-            this.pauseTestLabel.Location = new System.Drawing.Point(487, 221);
-            this.pauseTestLabel.Name = "pauseTestLabel";
-            this.pauseTestLabel.Size = new System.Drawing.Size(305, 108);
-            this.pauseTestLabel.TabIndex = 0;
-            this.pauseTestLabel.Text = "label1";
+            this.pauseLabel.AutoSize = true;
+            this.pauseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pauseLabel.ForeColor = System.Drawing.Color.White;
+            this.pauseLabel.Location = new System.Drawing.Point(465, 342);
+            this.pauseLabel.Name = "pauseLabel";
+            this.pauseLabel.Size = new System.Drawing.Size(548, 108);
+            this.pauseLabel.TabIndex = 0;
+            this.pauseLabel.Text = "pauseLabel";
+            // 
+            // livesLabel
+            // 
+            this.livesLabel.AutoSize = true;
+            this.livesLabel.BackColor = System.Drawing.Color.Transparent;
+            this.livesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.livesLabel.ForeColor = System.Drawing.Color.White;
+            this.livesLabel.Location = new System.Drawing.Point(16, 47);
+            this.livesLabel.Name = "livesLabel";
+            this.livesLabel.Size = new System.Drawing.Size(265, 59);
+            this.livesLabel.TabIndex = 1;
+            this.livesLabel.Text = "livesLabel\r\n";
             // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Controls.Add(this.pauseTestLabel);
+            this.Controls.Add(this.livesLabel);
+            this.Controls.Add(this.pauseLabel);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameScreen";
@@ -71,6 +85,7 @@
         #endregion
 
         private System.Windows.Forms.Timer gameTimer;
-        private System.Windows.Forms.Label pauseTestLabel;
+        private System.Windows.Forms.Label pauseLabel;
+        private System.Windows.Forms.Label livesLabel;
     }
 }
