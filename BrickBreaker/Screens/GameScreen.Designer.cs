@@ -32,6 +32,7 @@
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.pauseLabel = new System.Windows.Forms.Label();
             this.livesLabel = new System.Windows.Forms.Label();
+            this.leaveLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -63,11 +64,25 @@
             this.livesLabel.TabIndex = 1;
             this.livesLabel.Text = "livesLabel\r\n";
             // 
+            // leaveLabel
+            // 
+            this.leaveLabel.AutoSize = true;
+            this.leaveLabel.BackColor = System.Drawing.Color.Transparent;
+            this.leaveLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leaveLabel.ForeColor = System.Drawing.Color.White;
+            this.leaveLabel.Location = new System.Drawing.Point(127, 450);
+            this.leaveLabel.Name = "leaveLabel";
+            this.leaveLabel.Size = new System.Drawing.Size(1075, 59);
+            this.leaveLabel.TabIndex = 2;
+            this.leaveLabel.Text = "Press Enter to Leave, Esc again to continue";
+            this.leaveLabel.Visible = false;
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Controls.Add(this.leaveLabel);
             this.Controls.Add(this.livesLabel);
             this.Controls.Add(this.pauseLabel);
             this.DoubleBuffered = true;
@@ -87,5 +102,6 @@
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label pauseLabel;
         private System.Windows.Forms.Label livesLabel;
+        private System.Windows.Forms.Label leaveLabel;
     }
 }

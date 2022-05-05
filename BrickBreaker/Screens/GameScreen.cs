@@ -22,6 +22,8 @@ namespace BrickBreaker
 
         //player1 button control keys - DO NOT CHANGE
         Boolean leftArrowDown, rightArrowDown;
+
+        //extra bools
         bool paused = false;
         bool escunpressed = true;
 
@@ -50,24 +52,19 @@ namespace BrickBreaker
         }
         public void ashtonpower()
         {
-           
             int x = 20;
             int y = 20;  
             
-             
-
                 powerups p = new powerups(x, y, 5, 5);
                 power.Add(p);
-
-        
-
         }
         public void powerupsmove()
-        {powerupCounter ++; 
+        {
+            powerupCounter ++; 
             if(powerupCounter == 80)
             {
                 ashtonpower();
-                    powerupCounter = 0;
+                powerupCounter = 0;
             }
             foreach (powerups pow in power)
             {
@@ -137,25 +134,18 @@ namespace BrickBreaker
                     rightArrowDown = true;
                     break;
                 case Keys.Escape:
-                    if (paused == false)
+                    tryPause();
+                    break;
+                case Keys.Enter:
+                    if (paused == true)
                     {
-                        if (escunpressed == true)
-                        {
-                            pauseLabel.Text = "paused";
-                            gameTimer.Stop();
-                            paused = true;
-                            escunpressed = false;
-                        }
-                    }
-                    else
-                    {
-                        if (escunpressed == true)
-                        {
-                            pauseLabel.Text = "";
-                            gameTimer.Start();
-                            paused = false;
-                            escunpressed = false;
-                        }
+                        Form form = this.FindForm();
+                        MenuScreen ps = new MenuScreen();
+
+                        ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+
+                        form.Controls.Add(ps);
+                        form.Controls.Remove(this);
                     }
                     break;
                 default:
@@ -182,8 +172,35 @@ namespace BrickBreaker
             }
         }
 
+        private void tryPause()
+        {
+            if (paused == false)
+            {
+                if (escunpressed == true)
+                {
+                    pauseLabel.Text = "paused";
+                    leaveLabel.Visible = true;
+                    gameTimer.Stop();
+                    paused = true;
+                    escunpressed = false;
+                }
+            }
+            else
+            {
+                if (escunpressed == true)
+                {
+                    pauseLabel.Text = "";
+                    leaveLabel.Visible = false;
+                    gameTimer.Start();
+                    paused = false;
+                    escunpressed = false;
+                }
+            }
+        }
+
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            //check powerup collision
             foreach(powerups p in power)
             {
                 if (p.PowerupCollision(paddle) == true)
@@ -193,10 +210,9 @@ namespace BrickBreaker
                     break;
                 }
             }
-            
 
+            powerupsmove(); //move powerups
 
-            powerupsmove();
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
