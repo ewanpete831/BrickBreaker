@@ -20,7 +20,9 @@ namespace BrickBreaker
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown, escDown;
+        Boolean leftArrowDown, rightArrowDown;
+        bool paused = false;
+        bool escunpressed = true;
 
         // Game values
         int lives;
@@ -104,7 +106,26 @@ namespace BrickBreaker
                     rightArrowDown = true;
                     break;
                 case Keys.Escape:
-                    escDown = true;
+                    if (paused == false)
+                    {
+                        if (escunpressed == true)
+                        {
+                            pauseTestLabel.Text = "paused";
+                            gameTimer.Stop();
+                            paused = true;
+                            escunpressed = false;
+                        }
+                    }
+                    else
+                    {
+                        if (escunpressed == true)
+                        {
+                            pauseTestLabel.Text = "";
+                            gameTimer.Start();
+                            paused = false;
+                            escunpressed = false;
+                        }
+                    }
                     break;
                 default:
                     break;
@@ -123,12 +144,14 @@ namespace BrickBreaker
                     rightArrowDown = false;
                     break;
                 case Keys.Escape:
-                    escDown = false;
+                    escunpressed = true;
                     break;
                 default:
                     break;
             }
         }
+
+
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
