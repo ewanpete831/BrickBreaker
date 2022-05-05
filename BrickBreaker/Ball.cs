@@ -40,6 +40,12 @@ namespace BrickBreaker
             return blockRec.IntersectsWith(ballRec);
         }
 
+        public void AdrianPaddleCollision()
+        {
+           
+        }
+
+
         public void PaddleCollision(Paddle p)
         {
             Rectangle ballRec = new Rectangle(x, y, size, size);
@@ -47,7 +53,8 @@ namespace BrickBreaker
 
             if (ballRec.IntersectsWith(paddleRec))
             {
-                ySpeed *= -1;
+                //ball bounces up off of paddle
+                ySpeed *= -1;              
             }
         }
 
