@@ -1,6 +1,6 @@
-﻿/*  Created by: 
+﻿/*  Created by: Ewan, Trent, Adrian, Ashton, Drew
  *  Project: Brick Breaker
- *  Date: 
+ *  Date: May 4, 2022
  */ 
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace BrickBreaker
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown;
+        Boolean leftArrowDown, rightArrowDown, escDown;
 
         // Game values
         int lives;
@@ -103,6 +103,9 @@ namespace BrickBreaker
                 case Keys.Right:
                     rightArrowDown = true;
                     break;
+                case Keys.Escape:
+                    escDown = true;
+                    break;
                 default:
                     break;
             }
@@ -118,6 +121,9 @@ namespace BrickBreaker
                     break;
                 case Keys.Right:
                     rightArrowDown = false;
+                    break;
+                case Keys.Escape:
+                    escDown = false;
                     break;
                 default:
                     break;
