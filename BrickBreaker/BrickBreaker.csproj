@@ -133,8 +133,33 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\starwarsnoBG %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BB Menu Screen %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuScreen2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuTitle.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuTitle1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpaceBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Star Wars- The Imperial March %28Darth Vader_s Theme%29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Star_Wars_Logo.svg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
