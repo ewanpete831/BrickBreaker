@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BrickBreaker</RootNamespace>
     <AssemblyName>BrickBreaker</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -72,7 +72,14 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HowToPlayScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HowToPlayScreen.Designer.cs">
+      <DependentUpon>HowToPlayScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paddle.cs" />
+    <Compile Include="powerups.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\MenuScreen.cs">
@@ -132,8 +139,33 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\starwarsnoBG %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BB Menu Screen %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuScreen2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuTitle.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuTitle1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpaceBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Star Wars- The Imperial March %28Darth Vader_s Theme%29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Star_Wars_Logo.svg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -17,14 +17,19 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
+        List<powerups> power = new List<powerups>();
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown, escDown;
+        Boolean leftArrowDown, rightArrowDown;
+
+        //extra bools
+        bool paused = false;
+        bool escunpressed = true;
 
         // Game values
         int lives;
-
+        int powerupCounter = 0;
         // Paddle and Ball objects
         Paddle paddle;
         Ball ball;
@@ -43,8 +48,31 @@ namespace BrickBreaker
         {
             InitializeComponent();
             OnStart();
+            ashtonpower();
         }
-
+        public void ashtonpower()
+        {
+            int x = 20;
+            int y = 20;  
+            
+                powerups p = new powerups(x, y, 5, 5);
+                power.Add(p);
+        }
+        public void powerupsmove()
+        {
+            powerupCounter ++; 
+            if(powerupCounter == 80)
+            {
+                ashtonpower();
+                powerupCounter = 0;
+            }
+            foreach (powerups pow in power)
+            {
+                Size screenSize;
+                screenSize = new Size(this.Width, this.Height);
+                pow.Move(screenSize);
+            }
+        }
 
         public void OnStart()
         {
@@ -90,6 +118,8 @@ namespace BrickBreaker
 
             // start the game engine loop
             gameTimer.Enabled = true;
+
+            pauseLabel.Text = "";
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -104,7 +134,19 @@ namespace BrickBreaker
                     rightArrowDown = true;
                     break;
                 case Keys.Escape:
-                    escDown = true;
+                    tryPause();
+                    break;
+                case Keys.Enter:
+                    if (paused == true)
+                    {
+                        Form form = this.FindForm();
+                        MenuScreen ps = new MenuScreen();
+
+                        ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+
+                        form.Controls.Add(ps);
+                        form.Controls.Remove(this);
+                    }
                     break;
                 default:
                     break;
@@ -123,15 +165,54 @@ namespace BrickBreaker
                     rightArrowDown = false;
                     break;
                 case Keys.Escape:
-                    escDown = false;
+                    escunpressed = true;
                     break;
                 default:
                     break;
             }
         }
 
+        private void tryPause()
+        {
+            if (paused == false)
+            {
+                if (escunpressed == true)
+                {
+                    pauseLabel.Text = "paused";
+                    leaveLabel.Visible = true;
+                    gameTimer.Stop();
+                    paused = true;
+                    escunpressed = false;
+                }
+            }
+            else
+            {
+                if (escunpressed == true)
+                {
+                    pauseLabel.Text = "";
+                    leaveLabel.Visible = false;
+                    gameTimer.Start();
+                    paused = false;
+                    escunpressed = false;
+                }
+            }
+        }
+
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            //check powerup collision
+            foreach(powerups p in power)
+            {
+                if (p.PowerupCollision(paddle) == true)
+                {
+                    lives++;
+                    power.Remove(p);
+                    break;
+                }
+            }
+
+            powerupsmove(); //move powerups
+
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -201,10 +282,18 @@ namespace BrickBreaker
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
-        {
+        {   //draws power up 
+            foreach (powerups powers in power)
+            {
+                e.Graphics.FillRectangle(Brushes.Blue, powers.x, powers.y, powers.size, powers.size);
+
+            }
             // Draws paddle
             paddleBrush.Color = paddle.colour;
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+
+            //display lives
+            livesLabel.Text = $"Lives: {lives}";
 
             // Draws blocks
             foreach (Block b in blocks)
