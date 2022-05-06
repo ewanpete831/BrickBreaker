@@ -20,7 +20,7 @@ namespace BrickBreaker
         private void Form1_Load(object sender, EventArgs e)
         {
             // Start the program centred on the Menu Screen
-            MenuScreen ms = new MenuScreen();
+            menuScreen ms = new menuScreen();
             this.Controls.Add(ms);
 
             ms.Location = new Point((this.Width - ms.Width) / 2, (this.Height - ms.Height) / 2);
