@@ -72,6 +72,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HowToPlayScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HowToPlayScreen.Designer.cs">
+      <DependentUpon>HowToPlayScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paddle.cs" />
     <Compile Include="powerups.cs" />
     <Compile Include="Program.cs" />
