@@ -1,6 +1,6 @@
-﻿/*  Created by: 
+﻿/*  Created by: Ewan, Trent, Adrian, Ashton, Drew
  *  Project: Brick Breaker
- *  Date: 
+ *  Date: May 4, 2022
  */ 
 using System;
 using System.Collections.Generic;
@@ -22,6 +22,10 @@ namespace BrickBreaker
 
         //player1 button control keys - DO NOT CHANGE
         Boolean leftArrowDown, rightArrowDown;
+
+        //extra bools
+        bool paused = false;
+        bool escunpressed = true;
 
         // Game values
         int lives;
@@ -48,24 +52,19 @@ namespace BrickBreaker
         }
         public void ashtonpower()
         {
-           
             int x = 20;
             int y = 20;  
             
-             
-
                 powerups p = new powerups(x, y, 5, 5);
                 power.Add(p);
-
-        
-
         }
         public void powerupsmove()
-        {powerupCounter ++; 
+        {
+            powerupCounter ++; 
             if(powerupCounter == 80)
             {
                 ashtonpower();
-                    powerupCounter = 0;
+                powerupCounter = 0;
             }
             foreach (powerups pow in power)
             {
@@ -119,6 +118,8 @@ namespace BrickBreaker
 
             // start the game engine loop
             gameTimer.Enabled = true;
+
+            pauseLabel.Text = "";
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -131,6 +132,21 @@ namespace BrickBreaker
                     break;
                 case Keys.Right:
                     rightArrowDown = true;
+                    break;
+                case Keys.Escape:
+                    tryPause();
+                    break;
+                case Keys.Enter:
+                    if (paused == true)
+                    {
+                        Form form = this.FindForm();
+                        MenuScreen ps = new MenuScreen();
+
+                        ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+
+                        form.Controls.Add(ps);
+                        form.Controls.Remove(this);
+                    }
                     break;
                 default:
                     break;
@@ -148,13 +164,43 @@ namespace BrickBreaker
                 case Keys.Right:
                     rightArrowDown = false;
                     break;
+                case Keys.Escape:
+                    escunpressed = true;
+                    break;
                 default:
                     break;
             }
         }
 
+        private void tryPause()
+        {
+            if (paused == false)
+            {
+                if (escunpressed == true)
+                {
+                    pauseLabel.Text = "paused";
+                    leaveLabel.Visible = true;
+                    gameTimer.Stop();
+                    paused = true;
+                    escunpressed = false;
+                }
+            }
+            else
+            {
+                if (escunpressed == true)
+                {
+                    pauseLabel.Text = "";
+                    leaveLabel.Visible = false;
+                    gameTimer.Start();
+                    paused = false;
+                    escunpressed = false;
+                }
+            }
+        }
+
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            //check powerup collision
             foreach(powerups p in power)
             {
                 if (p.PowerupCollision(paddle) == true)
@@ -164,10 +210,9 @@ namespace BrickBreaker
                     break;
                 }
             }
-            
 
+            powerupsmove(); //move powerups
 
-            powerupsmove();
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -246,6 +291,9 @@ namespace BrickBreaker
             // Draws paddle
             paddleBrush.Color = paddle.colour;
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+
+            //display lives
+            livesLabel.Text = $"Lives: {lives}";
 
             // Draws blocks
             foreach (Block b in blocks)

@@ -37,6 +37,7 @@ namespace BrickBreaker
                 ySpeed *= -1;
             }
 
+
             return blockRec.IntersectsWith(ballRec);
         }
 
@@ -44,11 +45,24 @@ namespace BrickBreaker
         {
             Rectangle ballRec = new Rectangle(x, y, size, size);
             Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
+            //if (ballRec.IntersectsWith(paddleRec))
+            //{
+            //    //ball bounces up off of paddle
+            //    ySpeed *= -1;
 
-            if (ballRec.IntersectsWith(paddleRec))
-            {
-                ySpeed *= -1;
-            }
+            //Ball bounces off of paddle. Ball does not get stuck in paddle if hit from side
+                if (ballRec.IntersectsWith(paddleRec))
+                {
+                    if (ySpeed > 0)
+                    {
+                        y = p.y - p.height;
+                    }
+                    else
+                    {
+                        y = p.y + p.height;
+                    }
+                    ySpeed *= -1;
+                }            
         }
 
         public void WallCollision(UserControl UC)

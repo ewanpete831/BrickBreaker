@@ -23,9 +23,6 @@ namespace BrickBreaker
         public void Move(Size screenSize)
         {
              y += yspeed;
-
-            
-
         }
         public bool PowerupCollision(Paddle p)
         {
