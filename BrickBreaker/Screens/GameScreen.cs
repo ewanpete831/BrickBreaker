@@ -80,7 +80,7 @@ namespace BrickBreaker
         {
             //set life counter
             lives = 3;
-
+            
             level = 1;
 
             //set all button presses to false.
@@ -104,7 +104,7 @@ namespace BrickBreaker
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
-            LoadLevel(2);
+            LoadLevel(level);
             
 
             // start the game engine loop
@@ -248,8 +248,8 @@ namespace BrickBreaker
 
                     if (blocks.Count == 0)
                     {
-                        gameTimer.Enabled = false;
-                        OnEnd();
+                        level++;
+                        LoadLevel(level);
                     }
 
                     break;
@@ -261,7 +261,7 @@ namespace BrickBreaker
         }
 
         public void OnEnd()
-        {
+        { 
             // Goes to the game over screen
             Form form = this.FindForm();
             MenuScreen ps = new MenuScreen();
