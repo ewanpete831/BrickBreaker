@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Xml;
 
 namespace BrickBreaker
 {
@@ -30,6 +31,7 @@ namespace BrickBreaker
         // Game values
         int lives;
         int powerupCounter = 0;
+        int level;
         // Paddle and Ball objects
         Paddle paddle;
         Ball ball;
@@ -55,7 +57,7 @@ namespace BrickBreaker
             int x = 20;
             int y = 20;  
             
-                powerups p = new powerups(x, y, 5, 5);
+                powerups p = new powerups(x, y, 5, 5, 1);
                 power.Add(p);
         }
         public void powerupsmove()
@@ -79,6 +81,8 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
 
+            level = 1;
+
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
 
@@ -100,21 +104,8 @@ namespace BrickBreaker
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
-            #region Creates blocks for generic level. Need to replace with code that loads levels.
+            LoadLevel(2);
             
-            //TODO - replace all the code in this region eventually with code that loads levels from xml files
-            
-            blocks.Clear();
-            int x = 10;
-
-            while (blocks.Count < 12)
-            {
-                x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
-                blocks.Add(b1);
-            }
-
-            #endregion
 
             // start the game engine loop
             gameTimer.Enabled = true;
@@ -279,6 +270,34 @@ namespace BrickBreaker
 
             form.Controls.Add(ps);
             form.Controls.Remove(this);
+        }
+
+        public void LoadLevel(int level)
+        {
+            XmlReader reader = XmlReader.Create($"Resources/testLevel{level}.xml");
+
+            blocks.Clear();
+            string x, y, hp, colour;
+
+            while (reader.Read())
+            {
+                reader.ReadToFollowing("x");
+                x = reader.ReadString();
+
+                reader.ReadToFollowing("y");
+                y = reader.ReadString();
+
+                reader.ReadToFollowing("hp");
+                hp = reader.ReadString();
+
+                reader.ReadToFollowing("colour");
+                colour = reader.ReadString();
+
+                if (x != "")
+                {
+                    blocks.Add(new Block(Convert.ToInt32(x), Convert.ToInt32(y), Convert.ToInt32(hp), Color.FromName($"{colour}")));
+                }
+            }
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)

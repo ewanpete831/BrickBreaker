@@ -12,13 +12,14 @@ namespace BrickBreaker
         public int x, y;
         public int size = 15;
         public int xspeed, yspeed;
-        public powerups(int __x, int __y, int __xspeed, int __yspeed)
+        public int id;
+        public powerups(int __x, int __y, int __xspeed, int __yspeed, int _id)
         {
             x = __x;
             y = __y;
             xspeed = __xspeed;
             yspeed = __yspeed;
-
+            id = _id;
         }
         public void Move(Size screenSize)
         {
