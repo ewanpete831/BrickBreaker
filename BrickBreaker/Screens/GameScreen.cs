@@ -210,7 +210,7 @@ namespace BrickBreaker
                     }
                     if (p.id == 2)
                     {
-                        paddleWidth += 50;
+                        paddle.width += 50;
                     }
 
 
@@ -270,8 +270,15 @@ namespace BrickBreaker
                     }
                     if (blocks.Count == 0)
                     {
-                        level++;
-                        LoadLevel(level);
+                        if (level < 2)
+                        {
+                            level++;
+                            LoadLevel(level);
+                        }
+                        else
+                        {
+                            OnEnd();
+                        }
                     }
 
                     break;
@@ -349,7 +356,7 @@ namespace BrickBreaker
             
             // Draws paddle
             paddleBrush.Color = paddle.colour;
-            e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddleWidth, paddle.height);
+            e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
 
             //display lives
             livesLabel.Text = $"Lives: {lives}";
