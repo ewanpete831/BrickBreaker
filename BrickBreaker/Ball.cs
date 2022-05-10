@@ -61,6 +61,8 @@ namespace BrickBreaker
                         y = p.y + p.height;
                     }
                     ySpeed *= -1;
+
+                GameScreen.tiePlayer.Play();
                 }            
         }
 

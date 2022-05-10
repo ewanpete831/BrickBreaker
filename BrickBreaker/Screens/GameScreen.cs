@@ -43,6 +43,8 @@ namespace BrickBreaker
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
 
+        public static SoundPlayer tiePlayer = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
+
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
@@ -55,6 +57,7 @@ namespace BrickBreaker
             InitializeComponent();
             OnStart();
             ashtonpower();
+            TrentImages();
         }
         public void ashtonpower()
         {
@@ -67,6 +70,16 @@ namespace BrickBreaker
                 power.Add(p);
            
         }
+        public void TrentImages()
+        {
+            BackgroundImage = Properties.Resources.DeathStar4;
+        }
+
+        public void TrentSounds()
+        {
+           
+        }
+
         public void powerupsmove()
         {
              powerupCounter ++; 

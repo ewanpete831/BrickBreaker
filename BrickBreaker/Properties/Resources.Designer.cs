@@ -71,6 +71,16 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DeathStar4 {
+            get {
+                object obj = ResourceManager.GetObject("DeathStar4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] download {
@@ -184,6 +194,15 @@ namespace BrickBreaker.Properties {
         internal static string testLevel2 {
             get {
                 return ResourceManager.GetString("testLevel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream TIE_fighter_fire_1 {
+            get {
+                return ResourceManager.GetStream("TIE_fighter_fire_1", resourceCulture);
             }
         }
     }
