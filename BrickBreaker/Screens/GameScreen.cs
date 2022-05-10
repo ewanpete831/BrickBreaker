@@ -19,6 +19,8 @@ namespace BrickBreaker
     public partial class GameScreen : UserControl
     {
         List<powerups> power = new List<powerups>();
+       
+
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -35,6 +37,8 @@ namespace BrickBreaker
         // Paddle and Ball objects
         Paddle paddle;
         Ball ball;
+        Random randGen = new Random();
+        int paddleWidth;
 
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
@@ -55,15 +59,18 @@ namespace BrickBreaker
         public void ashtonpower()
         {
             int x = 20;
-            int y = 20;  
-            
-                powerups p = new powerups(x, y, 5, 5, 1);
+            int y = 20;
+            int id = randGen.Next(1, 3);
+
+            powerups p = new powerups(x, y, 5, 5, id);
+
                 power.Add(p);
+           
         }
         public void powerupsmove()
         {
             powerupCounter ++; 
-            if(powerupCounter == 80)
+           
             {
                 ashtonpower();
                 powerupCounter = 0;
@@ -74,6 +81,7 @@ namespace BrickBreaker
                 screenSize = new Size(this.Width, this.Height);
                 pow.Move(screenSize);
             }
+            
         }
 
         public void OnStart()
@@ -87,7 +95,7 @@ namespace BrickBreaker
             leftArrowDown = rightArrowDown = false;
 
             // setup starting paddle values and create paddle object
-            int paddleWidth = 80;
+            paddleWidth = 80;
             int paddleHeight = 20;
             int paddleX = ((this.Width / 2) - (paddleWidth / 2));
             int paddleY = (this.Height - paddleHeight) - 60;
@@ -196,11 +204,21 @@ namespace BrickBreaker
             {
                 if (p.PowerupCollision(paddle) == true)
                 {
-                    lives++;
+                    if(p.id == 1)
+                    {
+                        lives++;
+                    }
+                    if (p.id == 2)
+                    {
+                        paddleWidth += 50;
+                    }
+
+
                     power.Remove(p);
                     break;
                 }
             }
+            
 
             powerupsmove(); //move powerups
 
@@ -245,7 +263,11 @@ namespace BrickBreaker
                 if (ball.BlockCollision(b))
                 {
                     blocks.Remove(b);
-
+                    if(powerupCounter > 50)
+                    {
+                        powerupCounter = 0;
+                        powerupsmove();
+                    }
                     if (blocks.Count == 0)
                     {
                         level++;
@@ -313,13 +335,21 @@ namespace BrickBreaker
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {   //draws power up 
             foreach (powerups powers in power)
-            {
-                e.Graphics.FillRectangle(Brushes.Blue, powers.x, powers.y, powers.size, powers.size);
+            { if(powers.id == 1)
+                {
+                    e.Graphics.FillRectangle(Brushes.Blue, powers.x, powers.y, powers.size, powers.size);
+                }
+                if (powers.id == 2)
+                {
+                    e.Graphics.FillRectangle(Brushes.Red, powers.x, powers.y, powers.size, powers.size);
+                }
+
 
             }
+            
             // Draws paddle
             paddleBrush.Color = paddle.colour;
-            e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+            e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddleWidth, paddle.height);
 
             //display lives
             livesLabel.Text = $"Lives: {lives}";

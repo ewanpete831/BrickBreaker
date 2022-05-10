@@ -9,12 +9,16 @@ namespace BrickBreaker
 {
     internal class powerups
     {
+        public int id;
         public int x, y;
         public int size = 15;
         public int xspeed, yspeed;
+
         public int id;
+
         public powerups(int __x, int __y, int __xspeed, int __yspeed, int _id)
         {
+            id = _id;
             x = __x;
             y = __y;
             xspeed = __xspeed;
@@ -33,6 +37,7 @@ namespace BrickBreaker
             if (powerupRec.IntersectsWith(paddleRec))
             {
                 return true;
+              
             }
             return false;
 
