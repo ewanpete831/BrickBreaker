@@ -69,8 +69,8 @@ namespace BrickBreaker
         }
         public void powerupsmove()
         {
-            powerupCounter ++; 
-           
+             powerupCounter ++; 
+            if (powerupCounter == 50)
             {
                 ashtonpower();
                 powerupCounter = 0;
