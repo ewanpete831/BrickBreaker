@@ -67,8 +67,7 @@ namespace BrickBreaker
 
             powerups p = new powerups(x, y, 5, 5, id);
 
-                power.Add(p);
-           
+            power.Add(p);
         }
         public void TrentImages()
         {
