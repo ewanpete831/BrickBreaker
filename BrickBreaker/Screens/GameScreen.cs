@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Xml;
 
 namespace BrickBreaker
 {
@@ -32,6 +33,7 @@ namespace BrickBreaker
         // Game values
         int lives;
         int powerupCounter = 0;
+        int level;
         // Paddle and Ball objects
         Paddle paddle;
         Ball ball;
@@ -61,13 +63,14 @@ namespace BrickBreaker
             int id = randGen.Next(1, 3);
 
             powerups p = new powerups(x, y, 5, 5, id);
+
                 power.Add(p);
            
         }
         public void powerupsmove()
         {
-            powerupCounter ++; 
-           
+             powerupCounter ++; 
+            if (powerupCounter == 50)
             {
                 ashtonpower();
                 powerupCounter = 0;
@@ -85,6 +88,8 @@ namespace BrickBreaker
         {
             //set life counter
             lives = 3;
+            
+            level = 1;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -107,21 +112,8 @@ namespace BrickBreaker
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
-            #region Creates blocks for generic level. Need to replace with code that loads levels.
+            LoadLevel(level);
             
-            //TODO - replace all the code in this region eventually with code that loads levels from xml files
-            
-            blocks.Clear();
-            int x = 10;
-
-            while (blocks.Count < 12)
-            {
-                x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
-                blocks.Add(b1);
-            }
-
-            #endregion
 
             // start the game engine loop
             gameTimer.Enabled = true;
@@ -278,8 +270,8 @@ namespace BrickBreaker
                     }
                     if (blocks.Count == 0)
                     {
-                        gameTimer.Enabled = false;
-                        OnEnd();
+                        level++;
+                        LoadLevel(level);
                     }
 
                     break;
@@ -290,8 +282,17 @@ namespace BrickBreaker
             Refresh();
         }
 
-        public void OnEnd()
+        private void ResetPaddle()
         {
+            paddle.x = this.Width / 2;
+            paddle.y = (this.Height - paddle.height) - 60;
+
+            ball.x = this.Width / 2 - 10;
+            ball.y = this.Height - paddle.height - 80;
+        }
+
+        public void OnEnd()
+        { 
             // Goes to the game over screen
             Form form = this.FindForm();
             MenuScreen ps = new MenuScreen();
@@ -300,6 +301,35 @@ namespace BrickBreaker
 
             form.Controls.Add(ps);
             form.Controls.Remove(this);
+        }
+
+        public void LoadLevel(int level)
+        {
+            ResetPaddle();
+            XmlReader reader = XmlReader.Create($"Resources/testLevel{level}.xml");
+
+            blocks.Clear();
+            string x, y, hp, colour;
+
+            while (reader.Read())
+            {
+                reader.ReadToFollowing("x");
+                x = reader.ReadString();
+
+                reader.ReadToFollowing("y");
+                y = reader.ReadString();
+
+                reader.ReadToFollowing("hp");
+                hp = reader.ReadString();
+
+                reader.ReadToFollowing("colour");
+                colour = reader.ReadString();
+
+                if (x != "")
+                {
+                    blocks.Add(new Block(Convert.ToInt32(x), Convert.ToInt32(y), Convert.ToInt32(hp), Color.FromName($"{colour}")));
+                }
+            }
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
