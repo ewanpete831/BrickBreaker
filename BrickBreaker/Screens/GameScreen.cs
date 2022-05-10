@@ -271,7 +271,7 @@ namespace BrickBreaker
                 if (ball.BlockCollision(b))
                 {
                     blocks.Remove(b);
-                    if(powerupCounter > 50)
+                    if(powerupCounter > 100)
                     {
                         powerupCounter = 0;
                         powerupsmove();
