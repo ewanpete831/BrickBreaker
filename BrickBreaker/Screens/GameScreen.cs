@@ -260,6 +260,15 @@ namespace BrickBreaker
             Refresh();
         }
 
+        private void ResetPaddle()
+        {
+            paddle.x = this.Width / 2;
+            paddle.y = (this.Height - paddle.height) - 60;
+
+            ball.x = this.Width / 2 - 10;
+            ball.y = this.Height - paddle.height - 80;
+        }
+
         public void OnEnd()
         { 
             // Goes to the game over screen
@@ -274,6 +283,7 @@ namespace BrickBreaker
 
         public void LoadLevel(int level)
         {
+            ResetPaddle();
             XmlReader reader = XmlReader.Create($"Resources/testLevel{level}.xml");
 
             blocks.Clear();
