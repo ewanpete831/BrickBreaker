@@ -148,5 +148,43 @@ namespace BrickBreaker.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Bricks&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;395&lt;/x&gt;
+        ///		&lt;y&gt;249&lt;/y&gt;
+        ///		&lt;hp&gt;3&lt;/hp&gt;
+        ///		&lt;colour&gt;Color [YellowGreen]&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;395&lt;/x&gt;
+        ///		&lt;y&gt;135&lt;/y&gt;
+        ///		&lt;hp&gt;2&lt;/hp&gt;
+        ///		&lt;colour&gt;Color [Goldenrod]&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;395&lt;/x&gt;
+        ///		&lt;y&gt;45&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;Color [DarkRed]&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///&lt;/Bricks&gt;.
+        /// </summary>
+        internal static string testLevel1 {
+            get {
+                return ResourceManager.GetString("testLevel1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Bricks&gt;&lt;Brick&gt;&lt;x&gt;232&lt;/x&gt;&lt;y&gt;135&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [YellowGreen]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;395&lt;/x&gt;&lt;y&gt;135&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;Color [Goldenrod]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;395&lt;/x&gt;&lt;y&gt;270&lt;/y&gt;&lt;hp&gt;1&lt;/hp&gt;&lt;colour&gt;Color [DarkRed]&lt;/colour&gt;&lt;/Brick&gt;&lt;/Bricks&gt;.
+        /// </summary>
+        internal static string testLevel2 {
+            get {
+                return ResourceManager.GetString("testLevel2", resourceCulture);
+            }
+        }
     }
 }
