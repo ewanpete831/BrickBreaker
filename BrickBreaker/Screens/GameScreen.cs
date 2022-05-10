@@ -67,7 +67,7 @@ namespace BrickBreaker
         public void powerupsmove()
         {
             powerupCounter ++; 
-            if(powerupCounter == 80)
+           
             {
                 ashtonpower();
                 powerupCounter = 0;
@@ -271,7 +271,11 @@ namespace BrickBreaker
                 if (ball.BlockCollision(b))
                 {
                     blocks.Remove(b);
-
+                    if(powerupCounter > 50)
+                    {
+                        powerupCounter = 0;
+                        powerupsmove();
+                    }
                     if (blocks.Count == 0)
                     {
                         gameTimer.Enabled = false;
