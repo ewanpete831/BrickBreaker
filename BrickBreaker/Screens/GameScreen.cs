@@ -32,7 +32,6 @@ namespace BrickBreaker
 
         // Game values
         int lives;
-        int powerupCounter = 0;
         int level;
         // Paddle and Ball objects
         Paddle paddle;
@@ -54,12 +53,10 @@ namespace BrickBreaker
         {
             InitializeComponent();
             OnStart();
-            ashtonpower();
         }
-        public void ashtonpower()
+        public void ashtonpower(int x, int y)
         {
-            int x = 20;
-            int y = 20;
+            
             int id = randGen.Next(1, 3);
 
             powerups p = new powerups(x, y, 5, 5, id);
@@ -69,12 +66,7 @@ namespace BrickBreaker
         }
         public void powerupsmove()
         {
-             powerupCounter ++; 
-            if (powerupCounter == 50)
-            {
-                ashtonpower();
-                powerupCounter = 0;
-            }
+           
             foreach (powerups pow in power)
             {
                 Size screenSize;
@@ -262,12 +254,14 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
-                    blocks.Remove(b);
-                    if(powerupCounter > 100)
+                    int powerupChance = randGen.Next(0, 100);
+                    if (powerupChance > 80)
                     {
-                        powerupCounter = 0;
-                        powerupsmove();
+                        ashtonpower(b.x, b.y);
                     }
+
+                    blocks.Remove(b);
+                    
                     if (blocks.Count == 0)
                     {
                         level++;
