@@ -32,7 +32,6 @@ namespace BrickBreaker
 
         // Game values
         int lives;
-        int powerupCounter = 0;
         int level;
         // Paddle and Ball objects
         Paddle paddle;
@@ -56,13 +55,14 @@ namespace BrickBreaker
         {
             InitializeComponent();
             OnStart();
+
             ashtonpower();
             TrentImages();
+
         }
-        public void ashtonpower()
+        public void ashtonpower(int x, int y)
         {
-            int x = 20;
-            int y = 20;
+            
             int id = randGen.Next(1, 3);
 
             powerups p = new powerups(x, y, 5, 5, id);
@@ -81,12 +81,7 @@ namespace BrickBreaker
 
         public void powerupsmove()
         {
-             powerupCounter ++; 
-            if (powerupCounter == 50)
-            {
-                ashtonpower();
-                powerupCounter = 0;
-            }
+           
             foreach (powerups pow in power)
             {
                 Size screenSize;
@@ -211,6 +206,8 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            int bigpaddletime = 0;
+            
             //check powerup collision
             foreach(powerups p in power)
             {
@@ -221,9 +218,14 @@ namespace BrickBreaker
                         lives++;
                     }
                     if (p.id == 2)
+
+                    { 
+                        paddleWidth += 50;
+                        bigpaddletime++;    
                     {
                         paddle.width += 50;
                     }
+
 
 
                     power.Remove(p);
@@ -231,7 +233,10 @@ namespace BrickBreaker
                 }
             }
             
-
+            if (bigpaddletime > 50)
+            {
+                paddleWidth = 80;
+            }
             powerupsmove(); //move powerups
 
             // Move the paddle
@@ -274,12 +279,14 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
-                    blocks.Remove(b);
-                    if(powerupCounter > 50)
+                    int powerupChance = randGen.Next(0, 100);
+                    if (powerupChance > 80)
                     {
-                        powerupCounter = 0;
-                        powerupsmove();
+                        ashtonpower(b.x, b.y);
                     }
+
+                    blocks.Remove(b);
+                    
                     if (blocks.Count == 0)
                     {
                         if (level < 2)
