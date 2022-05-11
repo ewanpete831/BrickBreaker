@@ -191,6 +191,8 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            int bigpaddletime = 0;
+            
             //check powerup collision
             foreach(powerups p in power)
             {
@@ -201,9 +203,11 @@ namespace BrickBreaker
                         lives++;
                     }
                     if (p.id == 2)
-                    {
+                    { 
                         paddleWidth += 50;
+                        bigpaddletime++;    
                     }
+
 
 
                     power.Remove(p);
@@ -211,7 +215,10 @@ namespace BrickBreaker
                 }
             }
             
-
+            if (bigpaddletime > 50)
+            {
+                paddleWidth = 80;
+            }
             powerupsmove(); //move powerups
 
             // Move the paddle
