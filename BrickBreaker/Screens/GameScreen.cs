@@ -32,7 +32,6 @@ namespace BrickBreaker
 
         // Game values
         int lives;
-        int powerupCounter = 0;
         int level;
         // Paddle and Ball objects
         Paddle paddle;
@@ -56,19 +55,17 @@ namespace BrickBreaker
         {
             InitializeComponent();
             OnStart();
-            ashtonpower();
             TrentImages();
+
         }
-        public void ashtonpower()
+        public void ashtonpower(int x, int y)
         {
-            int x = 20;
-            int y = 20;
+            
             int id = randGen.Next(1, 3);
 
             powerups p = new powerups(x, y, 5, 5, id);
 
-                power.Add(p);
-           
+            power.Add(p);
         }
         public void TrentImages()
         {
@@ -82,12 +79,7 @@ namespace BrickBreaker
 
         public void powerupsmove()
         {
-             powerupCounter ++; 
-            if (powerupCounter == 50)
-            {
-                ashtonpower();
-                powerupCounter = 0;
-            }
+           
             foreach (powerups pow in power)
             {
                 Size screenSize;
@@ -102,7 +94,7 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
             
-            level = 1;
+            level = 4;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -212,94 +204,103 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            int bigpaddletime = 0;
+
             //check powerup collision
-            foreach(powerups p in power)
+            foreach (powerups p in power)
             {
                 if (p.PowerupCollision(paddle) == true)
                 {
-                    if(p.id == 1)
+                    if (p.id == 1)
                     {
                         lives++;
                     }
                     if (p.id == 2)
+
                     {
-                        paddle.width += 50;
+                        paddleWidth += 50;
+                        bigpaddletime++;
+                        {
+                            paddle.width += 50;
+                        } 
                     }
-
-
                     power.Remove(p);
                     break;
                 }
             }
-            
 
-            powerupsmove(); //move powerups
-
-            // Move the paddle
-            if (leftArrowDown && paddle.x > 0)
-            {
-                paddle.Move("left");
-            }
-            if (rightArrowDown && paddle.x < (this.Width - paddle.width))
-            {
-                paddle.Move("right");
-            }
-
-            // Move ball
-            ball.Move();
-
-            // Check for collision with top and side walls
-            ball.WallCollision(this);
-
-            // Check for ball hitting bottom of screen
-            if (ball.BottomCollision(this))
-            {
-                lives--;
-
-                // Moves the ball back to origin
-                ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-                ball.y = (this.Height - paddle.height) - 85;
-
-                if (lives == 0)
+                if (bigpaddletime > 50)
                 {
-                    gameTimer.Enabled = false;
-                    OnEnd();
+                    paddleWidth = 80;
                 }
-            }
 
-            // Check for collision of ball with paddle, (incl. paddle movement)
-            ball.PaddleCollision(paddle);
+                powerupsmove(); //move powerups
 
-            // Check if ball has collided with any blocks
-            foreach (Block b in blocks)
-            {
-                if (ball.BlockCollision(b))
+                // Move the paddle
+                if (leftArrowDown && paddle.x > 0)
                 {
-                    blocks.Remove(b);
-                    if(powerupCounter > 50)
-                    {
-                        powerupCounter = 0;
-                        powerupsmove();
-                    }
-                    if (blocks.Count == 0)
-                    {
-                        if (level < 2)
-                        {
-                            level++;
-                            LoadLevel(level);
-                        }
-                        else
-                        {
-                            OnEnd();
-                        }
-                    }
+                    paddle.Move("left");
+                }
+                if (rightArrowDown && paddle.x < (this.Width - paddle.width))
+                {
+                    paddle.Move("right");
+                }
 
+                // Move ball
+                ball.Move();
+
+                // Check for collision with top and side walls
+                ball.WallCollision(this);
+
+                // Check for ball hitting bottom of screen
+                if (ball.BottomCollision(this))
+                {
+                    lives--;
+
+                    // Moves the ball back to origin
+                    ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
+                    ball.y = (this.Height - paddle.height) - 85;
+
+                    if (lives == 0)
+                    {
+                        OnEnd();
+                    }
+                }
+
+                // Check for collision of ball with paddle, (incl. paddle movement)
+                ball.PaddleCollision(paddle);
+
+                // Check if ball has collided with any blocks
+                foreach (Block b in blocks)
+                {
+                    if (ball.BlockCollision(b))
+                    {
+                        int powerupChance = randGen.Next(0, 100);
+                        if (powerupChance > 80)
+                        {
+                            ashtonpower(b.x, b.y);
+                        }
+
+                        blocks.Remove(b);
+
+                        if (blocks.Count == 0)
+                        {
+                            if (level < 2)
+                            {
+                                level++;
+                                LoadLevel(level);
+                            }
+                            else
+                            {
+                                OnEnd();
+                            }
+                        }
                     break;
+                    }
                 }
-            }
 
-            //redraw the screen
-            Refresh();
+                //redraw the screen
+                Refresh();   
         }
 
         private void ResetPaddle()
@@ -312,7 +313,9 @@ namespace BrickBreaker
         }
 
         public void OnEnd()
-        { 
+        {
+            gameTimer.Enabled = false;
+
             // Goes to the game over screen
             Form form = this.FindForm();
             MenuScreen ps = new MenuScreen();

@@ -19,7 +19,7 @@ namespace BrickBreaker.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -194,6 +194,24 @@ namespace BrickBreaker.Properties {
         internal static string testLevel2 {
             get {
                 return ResourceManager.GetString("testLevel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Bricks&gt;&lt;Brick&gt;&lt;x&gt;232&lt;/x&gt;&lt;y&gt;135&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [YellowGreen]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;395&lt;/x&gt;&lt;y&gt;135&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;Color [Goldenrod]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;607&lt;/x&gt;&lt;y&gt;318&lt;/y&gt;&lt;hp&gt;1&lt;/hp&gt;&lt;colour&gt;Color [DarkRed]&lt;/colour&gt;&lt;/Brick&gt;&lt;/Bricks&gt;.
+        /// </summary>
+        internal static string testLevel3 {
+            get {
+                return ResourceManager.GetString("testLevel3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Bricks&gt;&lt;Brick&gt;&lt;x&gt;248&lt;/x&gt;&lt;y&gt;275&lt;/y&gt;&lt;hp&gt;1&lt;/hp&gt;&lt;colour&gt;Color [DarkRed]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;468&lt;/x&gt;&lt;y&gt;361&lt;/y&gt;&lt;hp&gt;1&lt;/hp&gt;&lt;colour&gt;Color [DarkRed]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;548&lt;/x&gt;&lt;y&gt;208&lt;/y&gt;&lt;hp&gt;1&lt;/hp&gt;&lt;colour&gt;Color [DarkRed]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;565&lt;/x&gt;&lt;y&gt;126&lt;/y&gt;&lt;hp&gt;1&lt;/hp&gt;&lt;colour&gt;Color [DarkRed]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;620&lt;/x&gt;&lt;y&gt;298&lt;/y&gt;&lt;hp&gt;1&lt;/hp&gt;&lt;colour&gt;Color [DarkRed]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;293&lt;/x&gt;&lt;y&gt;378&lt;/y&gt;&lt;hp&gt;1&lt;/hp&gt;&lt;colour&gt;Color [DarkRed]&lt;/colour&gt;&lt;/Brick&gt;&lt;Bri [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string testlevel4 {
+            get {
+                return ResourceManager.GetString("testlevel4", resourceCulture);
             }
         }
         
