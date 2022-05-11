@@ -39,6 +39,9 @@ namespace BrickBreaker
         Random randGen = new Random();
         int paddleWidth;
 
+
+        int bigpaddletime;
+
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
 
@@ -204,7 +207,7 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            int bigpaddletime = 0;
+           
 
             //check powerup collision
             foreach (powerups p in power)
@@ -358,7 +361,8 @@ namespace BrickBreaker
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {   //draws power up 
             foreach (powerups powers in power)
-            { if(powers.id == 1)
+            { 
+                if(powers.id == 1)
                 {
                     e.Graphics.FillRectangle(Brushes.Blue, powers.x, powers.y, powers.size, powers.size);
                 }
@@ -366,8 +370,6 @@ namespace BrickBreaker
                 {
                     e.Graphics.FillRectangle(Brushes.Red, powers.x, powers.y, powers.size, powers.size);
                 }
-
-
             }
             
             // Draws paddle
