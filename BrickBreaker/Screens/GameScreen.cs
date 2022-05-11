@@ -42,6 +42,8 @@ namespace BrickBreaker
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
 
+        public static SoundPlayer tiePlayer = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
+
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
@@ -53,6 +55,10 @@ namespace BrickBreaker
         {
             InitializeComponent();
             OnStart();
+
+            ashtonpower();
+            TrentImages();
+
         }
         public void ashtonpower(int x, int y)
         {
@@ -61,9 +67,18 @@ namespace BrickBreaker
 
             powerups p = new powerups(x, y, 5, 5, id);
 
-                power.Add(p);
+            power.Add(p);
+        }
+        public void TrentImages()
+        {
+            BackgroundImage = Properties.Resources.DeathStar4;
+        }
+
+        public void TrentSounds()
+        {
            
         }
+
         public void powerupsmove()
         {
            
@@ -81,7 +96,7 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
             
-            level = 1;
+            level = 4;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -203,9 +218,12 @@ namespace BrickBreaker
                         lives++;
                     }
                     if (p.id == 2)
+
                     { 
                         paddleWidth += 50;
                         bigpaddletime++;    
+                    {
+                        paddle.width += 50;
                     }
 
 
@@ -271,8 +289,15 @@ namespace BrickBreaker
                     
                     if (blocks.Count == 0)
                     {
-                        level++;
-                        LoadLevel(level);
+                        if (level < 2)
+                        {
+                            level++;
+                            LoadLevel(level);
+                        }
+                        else
+                        {
+                            OnEnd();
+                        }
                     }
 
                     break;
@@ -350,7 +375,7 @@ namespace BrickBreaker
             
             // Draws paddle
             paddleBrush.Color = paddle.colour;
-            e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddleWidth, paddle.height);
+            e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
 
             //display lives
             livesLabel.Text = $"Lives: {lives}";

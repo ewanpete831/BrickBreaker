@@ -44,6 +44,7 @@
             // pauseLabel
             // 
             this.pauseLabel.AutoSize = true;
+            this.pauseLabel.BackColor = System.Drawing.Color.Transparent;
             this.pauseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pauseLabel.ForeColor = System.Drawing.Color.White;
             this.pauseLabel.Location = new System.Drawing.Point(465, 342);
@@ -82,6 +83,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.leaveLabel);
             this.Controls.Add(this.livesLabel);
             this.Controls.Add(this.pauseLabel);
