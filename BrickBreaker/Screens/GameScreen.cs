@@ -296,7 +296,7 @@ namespace BrickBreaker
                             }
                         }
                     break;
-                }
+                    }
                 }
 
                 //redraw the screen
