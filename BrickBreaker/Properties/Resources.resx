@@ -154,6 +154,12 @@
   <data name="testLevel2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\testLevel2.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="testLevel3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\testLevel3.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="testlevel4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\testlevel4.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="TIE_fighter_fire_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TIE fighter fire 1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

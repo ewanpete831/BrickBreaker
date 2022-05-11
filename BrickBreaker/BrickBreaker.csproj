@@ -185,6 +185,19 @@
   <ItemGroup>
     <None Include="Resources\TIE fighter fire 1.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level3.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\testLevel3.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\testlevel4.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

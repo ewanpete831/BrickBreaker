@@ -101,7 +101,7 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
             
-            level = 1;
+            level = 4;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
