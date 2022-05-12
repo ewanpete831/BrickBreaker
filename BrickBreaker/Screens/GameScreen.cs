@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 using System.Xml;
+using System.Threading;
 
 namespace BrickBreaker
 {
@@ -40,9 +41,6 @@ namespace BrickBreaker
         Ball ball;
         Random randGen = new Random();
         int paddleWidth;
-
-
-        int bigpaddletime;
 
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
@@ -277,7 +275,7 @@ namespace BrickBreaker
                     {
                         int powerupChance = randGen.Next(0, 100);
 
-                        if (powerupChance > 60)
+                        if (powerupChance > 30)
 
                         {
                             ashtonpower(b.x, b.y);
@@ -287,7 +285,12 @@ namespace BrickBreaker
 
                         if (blocks.Count == 0)
                         {
-                            if (level < 4)
+                            pauseLabel.Text = $"Level {level} Complete!";
+                            Refresh();
+                            Thread.Sleep(2000);
+                            pauseLabel.Text = "";
+
+                        if (level < 4)
                             {
                                 level++;
                                 LoadLevel(level);
@@ -329,6 +332,7 @@ namespace BrickBreaker
         public void LoadLevel(int level)
         {
             ResetPaddle();
+
             XmlReader reader = XmlReader.Create($"Resources/testLevel{level}.xml");
 
             blocks.Clear();
