@@ -30,6 +30,8 @@ namespace BrickBreaker
         bool paused = false;
         bool escunpressed = true;
 
+        int bigpaddletime;
+
         // Game values
         int lives;
         int level;
@@ -97,6 +99,8 @@ namespace BrickBreaker
             lives = 3;
 
             level = 4;
+
+            
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -206,7 +210,10 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            int bigpaddletime = 0;
+            if(bigpaddletime > 0)
+            {
+                bigpaddletime--;
+            }
 
             //check powerup collision
             foreach (powerups p in power)
@@ -221,13 +228,9 @@ namespace BrickBreaker
 
                     {
 
-                        bigpaddletime++;
-                        {
-                            paddle.width += 50;
-                        }
-
-
-
+                        bigpaddletime += 1000;
+                       
+                        paddle.width = 130;
                       
                     }
                     power.Remove(p);
@@ -235,11 +238,9 @@ namespace BrickBreaker
                 }
             }
 
-                if (bigpaddletime > 50)
+                if (bigpaddletime == 0)
                 {
-                ResetPaddle();
-                    paddle.width = 80;
-                    bigpaddletime = 0;
+                paddle.width = 80;
                 }
                 powerupsmove(); //move powerups
 
