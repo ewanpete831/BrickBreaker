@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 using System.Xml;
+using System.Threading;
 
 namespace BrickBreaker
 {
@@ -284,7 +285,12 @@ namespace BrickBreaker
 
                         if (blocks.Count == 0)
                         {
-                            if (level < 4)
+                            pauseLabel.Text = $"Level {level} Complete!";
+                            Refresh();
+                            Thread.Sleep(2000);
+                            pauseLabel.Text = "";
+
+                        if (level < 4)
                             {
                                 level++;
                                 LoadLevel(level);
@@ -326,6 +332,7 @@ namespace BrickBreaker
         public void LoadLevel(int level)
         {
             ResetPaddle();
+
             XmlReader reader = XmlReader.Create($"Resources/testLevel{level}.xml");
 
             blocks.Clear();
