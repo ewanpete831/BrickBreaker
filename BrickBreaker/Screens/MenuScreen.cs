@@ -13,6 +13,8 @@ namespace BrickBreaker
 {
     public partial class MenuScreen : UserControl
     {
+        SoundPlayer player = new SoundPlayer(Properties.Resources.Star_Wars__The_Imperial_March__Darth_Vader_s_Theme_);
+
         public MenuScreen()
         {
             InitializeComponent();
@@ -22,8 +24,7 @@ namespace BrickBreaker
         public void TrentSound()
         {
             //Background sound for the menuScreen
-            SoundPlayer player = new SoundPlayer(Properties.Resources.Star_Wars__The_Imperial_March__Darth_Vader_s_Theme_);
-
+            
             player.Play();
         }
 

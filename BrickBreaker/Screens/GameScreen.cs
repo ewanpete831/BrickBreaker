@@ -82,14 +82,12 @@ namespace BrickBreaker
 
         public void powerupsmove()
         {
-           
             foreach (powerups pow in power)
             {
                 Size screenSize;
                 screenSize = new Size(this.Width, this.Height);
                 pow.Move(screenSize);
-            }
-            
+            } 
         }
 
         public void OnStart()
@@ -97,7 +95,7 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
             
-            level = 4;
+            level = 1;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -146,13 +144,7 @@ namespace BrickBreaker
                 case Keys.Enter:
                     if (paused == true)
                     {
-                        Form form = this.FindForm();
-                        MenuScreen ps = new MenuScreen();
-
-                        ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
-
-                        form.Controls.Add(ps);
-                        form.Controls.Remove(this);
+                        OnEnd();
                     }
                     break;
                 default:
@@ -207,8 +199,6 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-           
-
             //check powerup collision
             foreach (powerups p in power)
             {
@@ -288,7 +278,7 @@ namespace BrickBreaker
 
                         if (blocks.Count == 0)
                         {
-                            if (level < 2)
+                            if (level < 4)
                             {
                                 level++;
                                 LoadLevel(level);
@@ -356,6 +346,7 @@ namespace BrickBreaker
                     blocks.Add(new Block(Convert.ToInt32(x), Convert.ToInt32(y), Convert.ToInt32(hp), Color.FromName($"{colour}")));
                 }
             }
+            reader.Close();
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
