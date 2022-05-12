@@ -41,9 +41,6 @@ namespace BrickBreaker
         Random randGen = new Random();
         int paddleWidth;
 
-
-        int bigpaddletime;
-
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
 
@@ -277,7 +274,7 @@ namespace BrickBreaker
                     {
                         int powerupChance = randGen.Next(0, 100);
 
-                        if (powerupChance > 60)
+                        if (powerupChance > 30)
 
                         {
                             ashtonpower(b.x, b.y);
