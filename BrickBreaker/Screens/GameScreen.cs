@@ -19,7 +19,7 @@ namespace BrickBreaker
     public partial class GameScreen : UserControl
     {
         List<powerups> power = new List<powerups>();
-       
+
 
         #region global values
 
@@ -29,6 +29,8 @@ namespace BrickBreaker
         //extra bools
         bool paused = false;
         bool escunpressed = true;
+
+        int bigpaddletime;
 
         // Game values
         int lives;
@@ -63,7 +65,7 @@ namespace BrickBreaker
         }
         public void ashtonpower(int x, int y)
         {
-            
+
             int id = randGen.Next(1, 3);
 
             powerups p = new powerups(x, y, 5, 5, id);
@@ -77,24 +79,25 @@ namespace BrickBreaker
 
         public void TrentSounds()
         {
-           
+
         }
 
         public void powerupsmove()
         {
+
             foreach (powerups pow in power)
             {
                 Size screenSize;
                 screenSize = new Size(this.Width, this.Height);
                 pow.Move(screenSize);
-            } 
+            }
         }
 
         public void OnStart()
         {
             //set life counter
             lives = 3;
-            
+
             level = 1;
 
             //set all button presses to false.
@@ -119,7 +122,7 @@ namespace BrickBreaker
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
             LoadLevel(level);
-            
+
 
             // start the game engine loop
             gameTimer.Enabled = true;
@@ -199,6 +202,11 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+
+            if(bigpaddletime > 0)
+            {
+                bigpaddletime--;
+            }
             //check powerup collision
             foreach (powerups p in power)
             {
@@ -211,20 +219,19 @@ namespace BrickBreaker
                     if (p.id == 2)
 
                     {
-                        paddleWidth += 50;
-                        bigpaddletime++;
-                        {
-                            paddle.width += 50;
-                        } 
+                        bigpaddletime += 1000;
+                       
+                        paddle.width = 130;
                     }
+                    
                     power.Remove(p);
                     break;
                 }
             }
 
-                if (bigpaddletime > 50)
+                if (bigpaddletime == 0)
                 {
-                    paddleWidth = 80;
+                paddle.width = 80;
                 }
 
                 powerupsmove(); //move powerups
@@ -269,7 +276,9 @@ namespace BrickBreaker
                     if (ball.BlockCollision(b))
                     {
                         int powerupChance = randGen.Next(0, 100);
-                        if (powerupChance > 80)
+
+                        if (powerupChance > 60)
+
                         {
                             ashtonpower(b.x, b.y);
                         }
@@ -288,12 +297,10 @@ namespace BrickBreaker
                                 OnEnd();
                             }
                         }
-                    break;
+                        break;
                     }
                 }
-
-                //redraw the screen
-                Refresh();   
+                Refresh();
         }
 
         private void ResetPaddle()
@@ -312,7 +319,7 @@ namespace BrickBreaker
             // Goes to the game over screen
             Form form = this.FindForm();
             MenuScreen ps = new MenuScreen();
-            
+
             ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
 
             form.Controls.Add(ps);
@@ -362,7 +369,7 @@ namespace BrickBreaker
                     e.Graphics.FillRectangle(Brushes.Red, powers.x, powers.y, powers.size, powers.size);
                 }
             }
-            
+
             // Draws paddle
             paddleBrush.Color = paddle.colour;
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
@@ -380,4 +387,4 @@ namespace BrickBreaker
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
         }
     }
-}
+}    

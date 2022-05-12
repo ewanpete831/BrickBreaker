@@ -47,9 +47,10 @@
             this.pauseLabel.BackColor = System.Drawing.Color.Transparent;
             this.pauseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pauseLabel.ForeColor = System.Drawing.Color.White;
-            this.pauseLabel.Location = new System.Drawing.Point(465, 342);
+            this.pauseLabel.Location = new System.Drawing.Point(310, 228);
+            this.pauseLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pauseLabel.Name = "pauseLabel";
-            this.pauseLabel.Size = new System.Drawing.Size(548, 108);
+            this.pauseLabel.Size = new System.Drawing.Size(376, 73);
             this.pauseLabel.TabIndex = 0;
             this.pauseLabel.Text = "pauseLabel";
             // 
@@ -59,9 +60,10 @@
             this.livesLabel.BackColor = System.Drawing.Color.Transparent;
             this.livesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.livesLabel.ForeColor = System.Drawing.Color.White;
-            this.livesLabel.Location = new System.Drawing.Point(16, 47);
+            this.livesLabel.Location = new System.Drawing.Point(11, 31);
+            this.livesLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.livesLabel.Name = "livesLabel";
-            this.livesLabel.Size = new System.Drawing.Size(265, 59);
+            this.livesLabel.Size = new System.Drawing.Size(182, 39);
             this.livesLabel.TabIndex = 1;
             this.livesLabel.Text = "livesLabel\r\n";
             // 
@@ -71,16 +73,17 @@
             this.leaveLabel.BackColor = System.Drawing.Color.Transparent;
             this.leaveLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leaveLabel.ForeColor = System.Drawing.Color.White;
-            this.leaveLabel.Location = new System.Drawing.Point(127, 450);
+            this.leaveLabel.Location = new System.Drawing.Point(85, 300);
+            this.leaveLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.leaveLabel.Name = "leaveLabel";
-            this.leaveLabel.Size = new System.Drawing.Size(1075, 59);
+            this.leaveLabel.Size = new System.Drawing.Size(732, 39);
             this.leaveLabel.TabIndex = 2;
             this.leaveLabel.Text = "Press Enter to Leave, Esc again to continue";
             this.leaveLabel.Visible = false;
             // 
             // GameScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -88,9 +91,8 @@
             this.Controls.Add(this.livesLabel);
             this.Controls.Add(this.pauseLabel);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameScreen";
-            this.Size = new System.Drawing.Size(1281, 813);
+            this.Size = new System.Drawing.Size(854, 542);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
