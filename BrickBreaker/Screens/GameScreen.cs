@@ -41,6 +41,9 @@ namespace BrickBreaker
         Random randGen = new Random();
         int paddleWidth;
 
+
+        int bigpaddletime;
+
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
 
@@ -57,8 +60,6 @@ namespace BrickBreaker
         {
             InitializeComponent();
             OnStart();
-
-
             TrentImages();
 
         }
@@ -90,7 +91,6 @@ namespace BrickBreaker
                 screenSize = new Size(this.Width, this.Height);
                 pow.Move(screenSize);
             }
-
         }
 
         public void OnStart()
@@ -98,9 +98,7 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
 
-            level = 4;
-
-            
+            level = 1;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -149,13 +147,7 @@ namespace BrickBreaker
                 case Keys.Enter:
                     if (paused == true)
                     {
-                        Form form = this.FindForm();
-                        MenuScreen ps = new MenuScreen();
-
-                        ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
-
-                        form.Controls.Add(ps);
-                        form.Controls.Remove(this);
+                        OnEnd();
                     }
                     break;
                 default:
@@ -210,11 +202,11 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+
             if(bigpaddletime > 0)
             {
                 bigpaddletime--;
             }
-
             //check powerup collision
             foreach (powerups p in power)
             {
@@ -227,12 +219,11 @@ namespace BrickBreaker
                     if (p.id == 2)
 
                     {
-
                         bigpaddletime += 1000;
                        
                         paddle.width = 130;
-                      
                     }
+                    
                     power.Remove(p);
                     break;
                 }
@@ -242,6 +233,7 @@ namespace BrickBreaker
                 {
                 paddle.width = 80;
                 }
+
                 powerupsmove(); //move powerups
 
                 // Move the paddle
@@ -271,7 +263,6 @@ namespace BrickBreaker
 
                     if (lives == 0)
                     {
-                        gameTimer.Enabled = false;
                         OnEnd();
                     }
                 }
@@ -285,7 +276,9 @@ namespace BrickBreaker
                     if (ball.BlockCollision(b))
                     {
                         int powerupChance = randGen.Next(0, 100);
+
                         if (powerupChance > 60)
+
                         {
                             ashtonpower(b.x, b.y);
                         }
@@ -294,7 +287,7 @@ namespace BrickBreaker
 
                         if (blocks.Count == 0)
                         {
-                            if (level < 2)
+                            if (level < 4)
                             {
                                 level++;
                                 LoadLevel(level);
@@ -304,14 +297,10 @@ namespace BrickBreaker
                                 OnEnd();
                             }
                         }
-
                         break;
                     }
                 }
-
-                //redraw the screen
                 Refresh();
-            
         }
 
         private void ResetPaddle()
@@ -325,6 +314,8 @@ namespace BrickBreaker
 
         public void OnEnd()
         {
+            gameTimer.Enabled = false;
+
             // Goes to the game over screen
             Form form = this.FindForm();
             MenuScreen ps = new MenuScreen();
@@ -362,12 +353,14 @@ namespace BrickBreaker
                     blocks.Add(new Block(Convert.ToInt32(x), Convert.ToInt32(y), Convert.ToInt32(hp), Color.FromName($"{colour}")));
                 }
             }
+            reader.Close();
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {   //draws power up 
             foreach (powerups powers in power)
-            { if (powers.id == 1)
+            { 
+                if(powers.id == 1)
                 {
                     e.Graphics.FillRectangle(Brushes.Blue, powers.x, powers.y, powers.size, powers.size);
                 }
@@ -375,8 +368,6 @@ namespace BrickBreaker
                 {
                     e.Graphics.FillRectangle(Brushes.Red, powers.x, powers.y, powers.size, powers.size);
                 }
-
-
             }
 
             // Draws paddle
