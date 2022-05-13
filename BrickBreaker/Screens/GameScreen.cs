@@ -19,6 +19,7 @@ namespace BrickBreaker
     public partial class GameScreen : UserControl
     {
         List<powerups> power = new List<powerups>();
+
        
 
         #region global values
@@ -71,10 +72,20 @@ namespace BrickBreaker
         {
             BackgroundImage = Properties.Resources.DeathStar4;
         }
+        
 
         public void TrentSounds()
         {
-           
+            //Random randGen = new Random();
+
+            //int tie1 = randGen.Next(1, 3);
+
+            //if (tie1 == 1)
+            //{
+            //    SoundPlayer player = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
+
+            //    player.Play();
+            //}
         }
 
         public void powerupsmove()
@@ -318,11 +329,11 @@ namespace BrickBreaker
 
             // Goes to the game over screen
             Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
-            
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+            GameOverScreen go = new GameOverScreen();
 
-            form.Controls.Add(ps);
+            go.Location = new Point((form.Width - go.Width) / 2, (form.Height - go.Height) / 2);
+
+            form.Controls.Add(go);
             form.Controls.Remove(this);
         }
 
