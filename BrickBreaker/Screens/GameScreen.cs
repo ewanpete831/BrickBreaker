@@ -64,7 +64,6 @@ namespace BrickBreaker
         {
 
             int id = randGen.Next(1, 5);
-            int id = randGen.Next(1, 3);
 
             powerups p = new powerups(x, y, 5, 5, id);
 
