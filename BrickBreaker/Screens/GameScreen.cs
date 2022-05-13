@@ -21,7 +21,6 @@ namespace BrickBreaker
     {
         List<powerups> power = new List<powerups>();
 
-
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -65,6 +64,7 @@ namespace BrickBreaker
         {
 
             int id = randGen.Next(1, 5);
+            int id = randGen.Next(1, 3);
 
             powerups p = new powerups(x, y, 5, 5, id);
 
@@ -74,15 +74,24 @@ namespace BrickBreaker
         {
             BackgroundImage = Properties.Resources.DeathStar4;
         }
+        
 
         public void TrentSounds()
         {
+            //Random randGen = new Random();
 
+            //int tie1 = randGen.Next(1, 3);
+
+            //if (tie1 == 1)
+            //{
+            //    SoundPlayer player = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
+
+            //    player.Play();
+            //}
         }
 
         public void powerupsmove()
         {
-
             foreach (powerups pow in power)
             {
                 Size screenSize;
@@ -218,8 +227,8 @@ namespace BrickBreaker
 
                     {
                         bigpaddletime += 1000;
-                       
                         paddle.width = 130;
+                        paddle.x -= 25;
                     }
                     if(p.id == 3)
                     {
@@ -246,6 +255,9 @@ namespace BrickBreaker
                 ball.xSpeed = 6;
                 ball.ySpeed = 6;    
                 paddle.width = 80;
+
+                paddle.width = paddleWidth;
+
                 }
 
                 powerupsmove(); //move powerups
@@ -337,11 +349,11 @@ namespace BrickBreaker
 
             // Goes to the game over screen
             Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
+            GameOverScreen go = new GameOverScreen();
 
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+            go.Location = new Point((form.Width - go.Width) / 2, (form.Height - go.Height) / 2);
 
-            form.Controls.Add(ps);
+            form.Controls.Add(go);
             form.Controls.Remove(this);
         }
 
@@ -399,7 +411,20 @@ namespace BrickBreaker
             }
 
             // Draws paddle
-            paddleBrush.Color = paddle.colour;
+            if(0 < bigpaddletime && bigpaddletime < 100)
+            {
+                int opacity = 255 / ((bigpaddletime % 50) + 1);
+                if(opacity < 10)
+                {
+                    opacity += 20;
+                }
+                paddleBrush.Color = (Color.FromArgb(opacity, paddle.colour));
+            }
+            else
+            {
+                paddleBrush.Color = paddle.colour;
+            }
+           
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
 
             //display lives

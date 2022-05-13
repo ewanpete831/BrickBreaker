@@ -35,11 +35,8 @@ namespace BrickBreaker
             if (powerupRec.IntersectsWith(paddleRec))
             {
                 return true;
-              
             }
             return false;
-
-     
         }
     }
 }
