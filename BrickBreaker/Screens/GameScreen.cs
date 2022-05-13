@@ -21,7 +21,6 @@ namespace BrickBreaker
     {
         List<powerups> power = new List<powerups>();
 
-
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -73,10 +72,20 @@ namespace BrickBreaker
         {
             BackgroundImage = Properties.Resources.DeathStar4;
         }
+        
 
         public void TrentSounds()
         {
+            //Random randGen = new Random();
 
+            //int tie1 = randGen.Next(1, 3);
+
+            //if (tie1 == 1)
+            //{
+            //    SoundPlayer player = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
+
+            //    player.Play();
+            //}
         }
 
         public void powerupsmove()
@@ -319,11 +328,11 @@ namespace BrickBreaker
 
             // Goes to the game over screen
             Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
+            GameOverScreen go = new GameOverScreen();
 
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+            go.Location = new Point((form.Width - go.Width) / 2, (form.Height - go.Height) / 2);
 
-            form.Controls.Add(ps);
+            form.Controls.Add(go);
             form.Controls.Remove(this);
         }
 
