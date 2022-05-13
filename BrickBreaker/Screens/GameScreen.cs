@@ -63,7 +63,6 @@ namespace BrickBreaker
         }
         public void ashtonpower(int x, int y)
         {
-
             int id = randGen.Next(1, 3);
 
             powerups p = new powerups(x, y, 5, 5, id);
@@ -82,7 +81,6 @@ namespace BrickBreaker
 
         public void powerupsmove()
         {
-
             foreach (powerups pow in power)
             {
                 Size screenSize;
@@ -229,7 +227,7 @@ namespace BrickBreaker
 
                 if (bigpaddletime == 0)
                 {
-                paddle.width = 80;
+                paddle.width = paddleWidth;
                 }
 
                 powerupsmove(); //move powerups
