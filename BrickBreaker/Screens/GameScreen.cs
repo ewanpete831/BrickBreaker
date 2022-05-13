@@ -62,6 +62,8 @@ namespace BrickBreaker
         }
         public void ashtonpower(int x, int y)
         {
+
+            int id = randGen.Next(1, 5);
             int id = randGen.Next(1, 3);
 
             powerups p = new powerups(x, y, 5, 5, id);
@@ -228,15 +230,34 @@ namespace BrickBreaker
                         paddle.width = 130;
                         paddle.x -= 25;
                     }
+                    if(p.id == 3)
+                    {
+                        bigpaddletime += 1000;
+                        ball.xSpeed = 3;
+                        ball.ySpeed= 3;  
+
+                    }
+                    if(p.id == 4)
+                    {
+                        bigpaddletime += 1000;
+                        ball.xSpeed = 9;                       
+                        ball.ySpeed = 9;   
+                    }
+                  
                     
                     power.Remove(p);
                     break;
                 }
             }
 
-                if (bigpaddletime == 0)
+                if (bigpaddletime == 1)
                 {
+                ball.xSpeed = 6;
+                ball.ySpeed = 6;    
+                paddle.width = 80;
+
                 paddle.width = paddleWidth;
+
                 }
 
                 powerupsmove(); //move powerups
@@ -282,7 +303,7 @@ namespace BrickBreaker
                     {
                         int powerupChance = randGen.Next(0, 100);
 
-                        if (powerupChance > 30)
+                        if (powerupChance > 1)
 
                         {
                             ashtonpower(b.x, b.y);
@@ -378,6 +399,14 @@ namespace BrickBreaker
                 if (powers.id == 2)
                 {
                     e.Graphics.FillRectangle(Brushes.Red, powers.x, powers.y, powers.size, powers.size);
+                }
+                if (powers.id == 3)
+                {
+                    e.Graphics.FillRectangle(Brushes.Purple, powers.x, powers.y, powers.size, powers.size);
+                }
+                if(powers.id == 4)
+                {
+                    e.Graphics.FillRectangle(Brushes.Gold, powers.x, powers.y, powers.size, powers.size);
                 }
             }
 
