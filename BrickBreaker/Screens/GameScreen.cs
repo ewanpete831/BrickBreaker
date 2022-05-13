@@ -216,8 +216,8 @@ namespace BrickBreaker
 
                     {
                         bigpaddletime += 1000;
-                       
                         paddle.width = 130;
+                        paddle.x -= 25;
                     }
                     
                     power.Remove(p);
@@ -373,7 +373,20 @@ namespace BrickBreaker
             }
 
             // Draws paddle
-            paddleBrush.Color = paddle.colour;
+            if(0 < bigpaddletime && bigpaddletime < 100)
+            {
+                int opacity = 255 / ((bigpaddletime % 50) + 1);
+                if(opacity < 10)
+                {
+                    opacity += 20;
+                }
+                paddleBrush.Color = (Color.FromArgb(opacity, paddle.colour));
+            }
+            else
+            {
+                paddleBrush.Color = paddle.colour;
+            }
+           
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
 
             //display lives
