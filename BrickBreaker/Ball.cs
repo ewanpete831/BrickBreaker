@@ -31,9 +31,30 @@ namespace BrickBreaker
             Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
             Rectangle ballRec = new Rectangle(x, y, size, size);
 
+            //if (ballRec.IntersectsWith(blockRec))
+            //{
+            //    ySpeed *= -1;       
+            //}
+
+            //ball bounces off of all sides of bricks 
             if (ballRec.IntersectsWith(blockRec))
             {
-                ySpeed *= -1;
+                if (ySpeed < 0 && (blockRec.Bottom >= ballRec.Top) && (ballRec.Top <= blockRec.Bottom))
+                {
+                    ySpeed *= -1;
+                }
+                else if (ySpeed > 0 && (blockRec.Bottom <= ballRec.Top) && (ballRec.Bottom >= blockRec.Top))
+                {
+                    ySpeed *= -1;
+                }
+                else if(xSpeed < 0)
+                {
+                    xSpeed *= -1;
+                }
+                else if (xSpeed > 0)
+                {
+                    xSpeed *= -1;
+                }
             }
 
 
