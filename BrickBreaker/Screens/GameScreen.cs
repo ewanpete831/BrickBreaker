@@ -1,7 +1,7 @@
 ﻿/*  Created by: Ewan, Trent, Adrian, Ashton, Drew
  *  Project: Brick Breaker
  *  Date: May 4, 2022
- */ 
+ */
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,7 +51,9 @@ namespace BrickBreaker
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
-        SolidBrush blockBrush = new SolidBrush(Color.Red);
+        SolidBrush healthBrush = new SolidBrush(Color.Black);
+
+        Font healthFont = new Font("Times New Roman", 12.0f);
 
         #endregion
 
@@ -75,7 +77,7 @@ namespace BrickBreaker
         {
             BackgroundImage = Properties.Resources.DeathStar4;
         }
-        
+
 
         public void TrentSounds()
         {
@@ -218,6 +220,7 @@ namespace BrickBreaker
             {
                 slowtime--;
             }
+
             if (bigpaddletime > 0)
             {
                 bigpaddletime--;
@@ -238,21 +241,20 @@ namespace BrickBreaker
                         paddle.width = 130;
                         paddle.x -= 25;
                     }
-                    if(p.id == 3)
+                    if (p.id == 3)
                     {
                         slowtime += 1000;
                         ball.xSpeed = 3;
                         ball.ySpeed = 3;  
-
                     }
-                    if(p.id == 4)
+                    if (p.id == 4)
                     {
                         fasttime += 1000;
                         ball.xSpeed = 9;                       
                         ball.ySpeed = 9;   
                     }
-                  
-                    
+
+
                     power.Remove(p);
                     break;
                 }
@@ -266,8 +268,7 @@ namespace BrickBreaker
                  {
                 ball.xSpeed = 6;
                 ball.ySpeed = 6;
-
-            }
+                  }
                 if (bigpaddletime == 1)
                 {
                   
@@ -275,49 +276,58 @@ namespace BrickBreaker
 
                 paddle.width = paddleWidth;
 
-                }
+            }
 
-                powerupsmove(); //move powerups
+            powerupsmove(); //move powerups
 
-                // Move the paddle
-                if (leftArrowDown && paddle.x > 0)
+            // Move the paddle
+            if (leftArrowDown && paddle.x > 0)
+            {
+                paddle.Move("left");
+            }
+            if (rightArrowDown && paddle.x < (this.Width - paddle.width))
+            {
+                paddle.Move("right");
+            }
+
+            // Move ball
+            ball.Move();
+
+            // Check for collision with top and side walls
+            ball.WallCollision(this);
+
+            // Check for ball hitting bottom of screen
+            if (ball.BottomCollision(this))
+            {
+                lives--;
+
+                // Moves the ball back to origin
+                ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
+                ball.y = (this.Height - paddle.height) - 85;
+
+                if (lives == 0)
                 {
-                    paddle.Move("left");
+                    OnEnd();
                 }
-                if (rightArrowDown && paddle.x < (this.Width - paddle.width))
+            }
+
+            // Check for collision of ball with paddle, (incl. paddle movement)
+            ball.PaddleCollision(paddle);
+
+            // Check if ball has collided with any blocks
+            foreach (Block b in blocks)
+            {
+                b.lastHitTime++;
+                if (ball.BlockCollision(b))
                 {
-                    paddle.Move("right");
-                }
-
-                // Move ball
-                ball.Move();
-
-                // Check for collision with top and side walls
-                ball.WallCollision(this);
-
-                // Check for ball hitting bottom of screen
-                if (ball.BottomCollision(this))
-                {
-                    lives--;
-
-                    // Moves the ball back to origin
-                    ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-                    ball.y = (this.Height - paddle.height) - 85;
-
-                    if (lives == 0)
+                    if (b.lastHitTime > 5)
                     {
-                        OnEnd();
+                        b.hp--;
+                        b.lastHitTime = 0;
                     }
-                }
-
-                // Check for collision of ball with paddle, (incl. paddle movement)
-                ball.PaddleCollision(paddle);
-
-                // Check if ball has collided with any blocks
-                foreach (Block b in blocks)
-                {
-                    if (ball.BlockCollision(b))
+                    if (b.hp < 1)
                     {
+                        blocks.Remove(b);
                         int powerupChance = randGen.Next(0, 100);
 
                         if (powerupChance > 1)
@@ -325,30 +335,29 @@ namespace BrickBreaker
                         {
                             ashtonpower(b.x, b.y);
                         }
+                    }
 
-                        blocks.Remove(b);
-
-                        if (blocks.Count == 0)
-                        {
-                            pauseLabel.Text = $"Level {level} Complete!";
-                            Refresh();
-                            Thread.Sleep(2000);
-                            pauseLabel.Text = "";
+                    if (blocks.Count == 0)
+                    {
+                        pauseLabel.Text = $"Level {level} Complete!";
+                        Refresh();
+                        Thread.Sleep(2000);
+                        pauseLabel.Text = "";
 
                         if (level < 4)
-                            {
-                                level++;
-                                LoadLevel(level);
-                            }
-                            else
-                            {
-                                OnEnd();
-                            }
+                        {
+                            level++;
+                            LoadLevel(level);
                         }
-                        break;
+                        else
+                        {
+                            OnEnd();
+                        }
                     }
+                    break;
                 }
-                Refresh();
+            }
+            Refresh();
         }
 
         private void ResetPaddle()
@@ -383,6 +392,7 @@ namespace BrickBreaker
             blocks.Clear();
             string x, y, hp, colour;
 
+
             while (reader.Read())
             {
                 reader.ReadToFollowing("x");
@@ -408,8 +418,8 @@ namespace BrickBreaker
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {   //draws power up 
             foreach (powerups powers in power)
-            { 
-                if(powers.id == 1)
+            {
+                if (powers.id == 1)
                 {
                     e.Graphics.FillRectangle(Brushes.Blue, powers.x, powers.y, powers.size, powers.size);
                 }
@@ -421,17 +431,17 @@ namespace BrickBreaker
                 {
                     e.Graphics.FillRectangle(Brushes.Purple, powers.x, powers.y, powers.size, powers.size);
                 }
-                if(powers.id == 4)
+                if (powers.id == 4)
                 {
                     e.Graphics.FillRectangle(Brushes.Gold, powers.x, powers.y, powers.size, powers.size);
                 }
             }
 
             // Draws paddle
-            if(0 < bigpaddletime && bigpaddletime < 100)
+            if (0 < bigpaddletime && bigpaddletime < 100)
             {
                 int opacity = 255 / ((bigpaddletime % 50) + 1);
-                if(opacity < 10)
+                if (opacity < 10)
                 {
                     opacity += 20;
                 }
@@ -441,7 +451,7 @@ namespace BrickBreaker
             {
                 paddleBrush.Color = paddle.colour;
             }
-           
+
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
 
             //display lives
@@ -450,11 +460,12 @@ namespace BrickBreaker
             // Draws blocks
             foreach (Block b in blocks)
             {
-                e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                e.Graphics.FillRectangle(new SolidBrush(b.colour), b.x, b.y, b.width, b.height);
+                e.Graphics.DrawString($"{b.hp}", healthFont, healthBrush, b.x + 15, b.y);
             }
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
         }
     }
-}    
+}

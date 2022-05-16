@@ -4,18 +4,18 @@
 		<x>395</x>
 		<y>249</y>
 		<hp>3</hp>
-		<colour>Color [YellowGreen]</colour>
+		<colour>YellowGreen</colour>
 	</Brick>
 	<Brick>
 		<x>395</x>
 		<y>135</y>
 		<hp>2</hp>
-		<colour>Color [Goldenrod]</colour>
+		<colour>Goldenrod</colour>
 	</Brick>
 	<Brick>
 		<x>395</x>
 		<y>45</y>
 		<hp>1</hp>
-		<colour>Color [DarkRed]</colour>
+		<colour>DarkRed</colour>
 	</Brick>
 </Bricks>
