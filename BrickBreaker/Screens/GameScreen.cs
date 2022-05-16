@@ -31,6 +31,8 @@ namespace BrickBreaker
         bool escunpressed = true;
 
         int bigpaddletime;
+        int slowtime;
+        int fasttime;
 
         // Game values
         int lives;
@@ -207,9 +209,16 @@ namespace BrickBreaker
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
-        {
-
-            if(bigpaddletime > 0)
+        {   
+            if(fasttime > 0 )
+            {
+                fasttime--;
+            }
+            if (slowtime > 0)
+            {
+                slowtime--;
+            }
+            if (bigpaddletime > 0)
             {
                 bigpaddletime--;
             }
@@ -231,14 +240,14 @@ namespace BrickBreaker
                     }
                     if(p.id == 3)
                     {
-                        bigpaddletime += 1000;
+                        slowtime += 1000;
                         ball.xSpeed = 3;
-                        ball.ySpeed= 3;  
+                        ball.ySpeed = 3;  
 
                     }
                     if(p.id == 4)
                     {
-                        bigpaddletime += 1000;
+                        fasttime += 1000;
                         ball.xSpeed = 9;                       
                         ball.ySpeed = 9;   
                     }
@@ -248,11 +257,20 @@ namespace BrickBreaker
                     break;
                 }
             }
+                 if (fasttime == 1)
+                 {
+                ball.xSpeed = 6;
+                ball.ySpeed = 6;
+            }
+                 if (slowtime == 1)
+                 {
+                ball.xSpeed = 6;
+                ball.ySpeed = 6;
 
+            }
                 if (bigpaddletime == 1)
                 {
-                ball.xSpeed = 6;
-                ball.ySpeed = 6;    
+                  
                 paddle.width = 80;
 
                 paddle.width = paddleWidth;
