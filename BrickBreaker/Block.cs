@@ -8,7 +8,8 @@ using System.Drawing;
 namespace BrickBreaker
 {
     public class Block
-    {
+    { 
+        public int lastHitTime = 0;
         public int width = 50;
         public int height = 25;
 
