@@ -84,12 +84,17 @@ namespace BrickBreaker
             //Random randGen = new Random();
 
             //int tie1 = randGen.Next(1, 3);
+            //int tie2 = randGen.Next(1, 3);
 
             //if (tie1 == 1)
             //{
             //    SoundPlayer player = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
 
             //    player.Play();
+            //}
+            //else if (tie2 == 2 && tie1 == 1)
+            //{
+
             //}
         }
 

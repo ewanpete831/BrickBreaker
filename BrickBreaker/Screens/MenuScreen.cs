@@ -47,14 +47,14 @@ namespace BrickBreaker
 
         private void optionsButton_Click(object sender, EventArgs e)
         {
-            // Trent: Goes to the HowToPlayscreen
-            HowToPlayScreen gs = new HowToPlayScreen();
+            // Trent: Goes to the OptionScreen
+            OptionsScreen os = new OptionsScreen();
             Form form = this.FindForm();
 
-            form.Controls.Add(gs);
+            form.Controls.Add(os);
             form.Controls.Remove(this);
 
-            gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
+            os.Location = new Point((form.Width - os.Width) / 2, (form.Height - os.Height) / 2);
         }
     }
 }
