@@ -121,11 +121,20 @@
   <data name="BB_Menu_Screen__1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BB Menu Screen (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BrickDestroy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mixkit-shot-light-explosion-1682 (1).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="DeathStar4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DeathStar4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download.jfif;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GameOverScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GameOverScreen.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GameoverSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gameover Sound3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MenuScreen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MenuScreen2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -162,5 +171,8 @@
   </data>
   <data name="TIE_fighter_fire_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TIE fighter fire 1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TIE_fighter_fire_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TIE fighter fire 2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

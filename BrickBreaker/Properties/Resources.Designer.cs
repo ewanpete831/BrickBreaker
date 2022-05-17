@@ -71,6 +71,15 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream BrickDestroy {
+            get {
+                return ResourceManager.GetStream("BrickDestroy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap DeathStar4 {
@@ -87,6 +96,25 @@ namespace BrickBreaker.Properties {
             get {
                 object obj = ResourceManager.GetObject("download", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GameOverScreen {
+            get {
+                object obj = ResourceManager.GetObject("GameOverScreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream GameoverSound {
+            get {
+                return ResourceManager.GetStream("GameoverSound", resourceCulture);
             }
         }
         
@@ -293,6 +321,15 @@ namespace BrickBreaker.Properties {
         internal static System.IO.UnmanagedMemoryStream TIE_fighter_fire_1 {
             get {
                 return ResourceManager.GetStream("TIE_fighter_fire_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream TIE_fighter_fire_2 {
+            get {
+                return ResourceManager.GetStream("TIE_fighter_fire_2", resourceCulture);
             }
         }
     }

@@ -225,6 +225,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gameover Sound3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mixkit-shot-light-explosion-1682 %281%29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TIE fighter fire 2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GameOverScreen.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
