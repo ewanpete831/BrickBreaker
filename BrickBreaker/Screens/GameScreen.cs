@@ -47,6 +47,9 @@ namespace BrickBreaker
         List<Block> blocks = new List<Block>();
 
         public static SoundPlayer tiePlayer = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
+        public static SoundPlayer tiePlayer2 = new SoundPlayer(Properties.Resources.TIE_fighter_fire_2);
+        SoundPlayer gameOverSound = new SoundPlayer(Properties.Resources.GameoverSound);
+        SoundPlayer brickBroken = new SoundPlayer(Properties.Resources.BrickDestroy);
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -305,6 +308,7 @@ namespace BrickBreaker
 
                 if (lives == 0)
                 {
+                    gameOverSound.Play();
                     OnEnd();
                 }
             }
@@ -326,6 +330,7 @@ namespace BrickBreaker
                     if (b.hp < 1)
                     {
                         blocks.Remove(b);
+                        brickBroken.Play();
                         int powerupChance = randGen.Next(0, 100);
 
                         if (powerupChance > 1)
