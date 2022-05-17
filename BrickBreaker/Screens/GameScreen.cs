@@ -243,29 +243,28 @@ namespace BrickBreaker
                     if (p.id == 3)
                     {
                         slowtime += 1000;
-                        ball.xSpeed = 3;
-                        ball.ySpeed = 3;
+                        ball.xSpeed *= 0.5;
+                        ball.ySpeed *= 0.5;
                     }
                     if (p.id == 4)
                     {
                         fasttime += 1000;
-                        ball.xSpeed = 9;
-                        ball.ySpeed = 9;
+                        ball.xSpeed *= 1.5;
+                        ball.ySpeed *= 1.5;
                     }
-
                     power.Remove(p);
                     break;
                 }
             }
             if (fasttime == 1)
             {
-                ball.xSpeed = 6;
-                ball.ySpeed = 6;
+                ball.xSpeed *= 0.66;
+                ball.ySpeed *= 0.66;
             }
             if (slowtime == 1)
             {
-                ball.xSpeed = 6;
-                ball.ySpeed = 6;
+                ball.xSpeed *= 2;
+                ball.ySpeed *= 2;
             }
             if (bigpaddletime == 1)
             {
@@ -459,7 +458,7 @@ namespace BrickBreaker
             }
 
             // Draws ball
-            e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+            e.Graphics.FillRectangle(ballBrush, Convert.ToInt32(ball.x), Convert.ToInt32(ball.y), Convert.ToInt32(ball.size), Convert.ToInt32(ball.size));
         }
     }
 }
