@@ -84,8 +84,20 @@
     <Compile Include="HowToPlayScreen.Designer.cs">
       <DependentUpon>HowToPlayScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="OptionsScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OptionsScreen.Designer.cs">
+      <DependentUpon>OptionsScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paddle.cs" />
     <Compile Include="powerups.cs" />
+    <Compile Include="PowerupScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PowerupScreen.Designer.cs">
+      <DependentUpon>PowerupScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\MenuScreen.cs">
@@ -108,6 +120,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HowToPlayScreen.resx">
       <DependentUpon>HowToPlayScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsScreen.resx">
+      <DependentUpon>OptionsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PowerupScreen.resx">
+      <DependentUpon>PowerupScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
