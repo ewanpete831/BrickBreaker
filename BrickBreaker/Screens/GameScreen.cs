@@ -142,7 +142,7 @@ namespace BrickBreaker
             int xSpeed = 6;
             int ySpeed = 6;
             int ballSize = 20;
-            ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
+            ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize, 10000000000);
 
             LoadLevel(level);
 
