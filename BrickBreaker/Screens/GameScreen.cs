@@ -35,6 +35,7 @@ namespace BrickBreaker
         int fasttime;
         int ballDamage;
         int damagetime;
+     
 
         // Game values
         int lives;
@@ -120,7 +121,7 @@ namespace BrickBreaker
 
             level = 1;
 
-            ballDamage = 3;
+            ballDamage = 1;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
