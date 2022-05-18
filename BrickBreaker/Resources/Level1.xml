@@ -180,4 +180,34 @@
 		<hp>1</hp>
 		<colour>DarkRed</colour>
 	</Brick>
+	<Brick>
+		<x>402</x>
+		<y>283</y>
+		<hp>1</hp>
+		<colour>LightGray</colour>
+	</Brick>
+	<Brick>
+		<x>365</x>
+		<y>283</y>
+		<hp>1</hp>
+		<colour>LightGray</colour>
+	</Brick>
+	<Brick>
+		<x>402</x>
+		<y>308</y>
+		<hp>1</hp>
+		<colour>Gray</colour>
+	</Brick>
+	<Brick>
+		<x>365</x>
+		<y>308</y>
+		<hp>1</hp>
+		<colour>Gray</colour>
+	</Brick>
+	<Brick>
+		<x>383</x>
+		<y>333</y>
+		<hp>1</hp>
+		<colour>Gray</colour>
+	</Brick>
 </Bricks>

@@ -119,7 +119,7 @@ namespace BrickBreaker
 
             level = 2;
 
-            ballDamage = 1;
+            ballDamage = 3;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -254,14 +254,20 @@ namespace BrickBreaker
                     if (p.id == 3)
                     {
                         slowtime += 1000;
-                        ball.xSpeed *= 0.5;
-                        ball.ySpeed *= 0.5;
+                        if (Math.Abs(ball.ySpeed) > 3)
+                        {
+                            ball.xSpeed *= 0.5;
+                            ball.ySpeed *= 0.5;
+                        }
                     }
                     if (p.id == 4)
                     {
                         fasttime += 1000;
-                        ball.xSpeed *= 1.5;
-                        ball.ySpeed *= 1.5;
+                        if (Math.Abs(ball.ySpeed) < 9)
+                        {
+                            ball.xSpeed *= 1.5;
+                            ball.ySpeed *= 1.5;
+                        }
                     }
                     power.Remove(p);
                     break;
@@ -393,7 +399,7 @@ namespace BrickBreaker
         {
             ResetPaddle();
 
-            XmlReader reader = XmlReader.Create($"Resources/TestLevel{level}.xml");
+            XmlReader reader = XmlReader.Create($"Resources/Level{level}.xml");
 
             blocks.Clear();
             string x, y, hp, colour;
