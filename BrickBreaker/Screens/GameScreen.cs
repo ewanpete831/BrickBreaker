@@ -33,6 +33,7 @@ namespace BrickBreaker
         int bigpaddletime;
         int slowtime;
         int fasttime;
+        int ballDamage;
 
         // Game values
         int lives;
@@ -116,7 +117,9 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
 
-            level = 1;
+            level = 2;
+
+            ballDamage = 1;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -324,7 +327,7 @@ namespace BrickBreaker
                 {
                     if (b.lastHitTime > 5)
                     {
-                        b.hp--;
+                        b.hp -= ballDamage;
                         b.lastHitTime = 0;
                     }
                     if (b.hp < 1)
@@ -390,7 +393,7 @@ namespace BrickBreaker
         {
             ResetPaddle();
 
-            XmlReader reader = XmlReader.Create($"Resources/testLevel{level}.xml");
+            XmlReader reader = XmlReader.Create($"Resources/TestLevel{level}.xml");
 
             blocks.Clear();
             string x, y, hp, colour;
