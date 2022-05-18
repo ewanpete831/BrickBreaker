@@ -34,6 +34,7 @@ namespace BrickBreaker
         int slowtime;
         int fasttime;
         int ballDamage;
+        int damagetime;
 
         // Game values
         int lives;
@@ -71,7 +72,7 @@ namespace BrickBreaker
         public void ashtonpower(int x, int y)
         {
 
-            int id = randGen.Next(1, 5);
+            int id = randGen.Next(1, 6);
 
             powerups p = new powerups(x, y, 5, 5, id);
 
@@ -117,7 +118,7 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
 
-            level = 2;
+            level = 1;
 
             ballDamage = 1;
 
@@ -236,6 +237,10 @@ namespace BrickBreaker
             {
                 bigpaddletime--;
             }
+            if (damagetime > 0)
+            {
+                damagetime--;
+            }
             //check powerup collision
             foreach (powerups p in power)
             {
@@ -263,6 +268,11 @@ namespace BrickBreaker
                         ball.xSpeed *= 1.5;
                         ball.ySpeed *= 1.5;
                     }
+                    if(p.id == 5)
+                    {
+                        ballDamage = 2;
+                        damagetime += 1000;
+                    }
                     power.Remove(p);
                     break;
                 }
@@ -280,6 +290,10 @@ namespace BrickBreaker
             if (bigpaddletime == 1)
             {
                 paddle.width = paddleWidth;
+            }
+            if (damagetime == 1)
+            {
+                ballDamage = 1;
             }
 
             powerupsmove(); //move powerups
@@ -393,7 +407,7 @@ namespace BrickBreaker
         {
             ResetPaddle();
 
-            XmlReader reader = XmlReader.Create($"Resources/TestLevel{level}.xml");
+            XmlReader reader = XmlReader.Create($"Resources/Level{level}.xml");
 
             blocks.Clear();
             string x, y, hp, colour;
@@ -440,6 +454,10 @@ namespace BrickBreaker
                 if (powers.id == 4)
                 {
                     e.Graphics.FillRectangle(Brushes.Gold, powers.x, powers.y, powers.size, powers.size);
+                }
+                if(powers.id == 5)
+                {
+                    e.Graphics.FillRectangle(Brushes.Green, powers.x, powers.y, powers.size, powers.size);
                 }
             }
 
