@@ -19,7 +19,7 @@ namespace BrickBreaker.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -71,6 +71,15 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream BrickDestroy {
+            get {
+                return ResourceManager.GetStream("BrickDestroy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap DeathStar4 {
@@ -87,6 +96,108 @@ namespace BrickBreaker.Properties {
             get {
                 object obj = ResourceManager.GetObject("download", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GameOverScreen {
+            get {
+                object obj = ResourceManager.GetObject("GameOverScreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream GameoverSound {
+            get {
+                return ResourceManager.GetStream("GameoverSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Bricks&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;375&lt;/x&gt;
+        ///		&lt;y&gt;89&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;390&lt;/x&gt;
+        ///		&lt;y&gt;89&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;375&lt;/x&gt;
+        ///		&lt;y&gt;73&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;390&lt;/x&gt;
+        ///		&lt;y&gt;73&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;390&lt;/x&gt;
+        ///		&lt;y&gt;48&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt;Brick&gt;
+        ///		 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Level1 {
+            get {
+                return ResourceManager.GetString("Level1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Bricks&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;544&lt;/x&gt;
+        ///		&lt;y&gt;57&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;762&lt;/x&gt;
+        ///		&lt;y&gt;352&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;125&lt;/x&gt;
+        ///		&lt;y&gt;143&lt;/y&gt;
+        ///		&lt;hp&gt;2&lt;/hp&gt;
+        ///		&lt;colour&gt;LightGray&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;125&lt;/x&gt;
+        ///		&lt;y&gt;119&lt;/y&gt;
+        ///		&lt;hp&gt;2&lt;/hp&gt;
+        ///		&lt;colour&gt;LightGray&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt;Brick&gt;
+        ///		&lt;x&gt;125&lt;/x&gt;
+        ///		&lt;y&gt;105&lt;/y&gt;
+        ///		&lt;hp&gt;2&lt;/hp&gt;
+        ///		&lt;colour&gt;LightGray&lt;/colour&gt;
+        ///	&lt;/Brick&gt;
+        ///	&lt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Level2 {
+            get {
+                return ResourceManager.GetString("Level2", resourceCulture);
             }
         }
         
@@ -293,6 +404,15 @@ namespace BrickBreaker.Properties {
         internal static System.IO.UnmanagedMemoryStream TIE_fighter_fire_1 {
             get {
                 return ResourceManager.GetStream("TIE_fighter_fire_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream TIE_fighter_fire_2 {
+            get {
+                return ResourceManager.GetStream("TIE_fighter_fire_2", resourceCulture);
             }
         }
     }

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BrickBreaker</RootNamespace>
     <AssemblyName>BrickBreaker</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -84,8 +84,20 @@
     <Compile Include="HowToPlayScreen.Designer.cs">
       <DependentUpon>HowToPlayScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="OptionsScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OptionsScreen.Designer.cs">
+      <DependentUpon>OptionsScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paddle.cs" />
     <Compile Include="powerups.cs" />
+    <Compile Include="PowerupScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PowerupScreen.Designer.cs">
+      <DependentUpon>PowerupScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\MenuScreen.cs">
@@ -108,6 +120,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HowToPlayScreen.resx">
       <DependentUpon>HowToPlayScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsScreen.resx">
+      <DependentUpon>OptionsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PowerupScreen.resx">
+      <DependentUpon>PowerupScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -195,15 +213,34 @@
     <None Include="Resources\TIE fighter fire 1.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\level3.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\testLevel3.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\testlevel4.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gameover Sound3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mixkit-shot-light-explosion-1682 %281%29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TIE fighter fire 2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GameOverScreen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

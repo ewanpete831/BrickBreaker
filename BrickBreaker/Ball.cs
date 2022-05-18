@@ -6,12 +6,12 @@ namespace BrickBreaker
 {
     public class Ball
     {
-        public int x, y, xSpeed, ySpeed, size;
+        public double x, y, xSpeed, ySpeed, size;
         public Color colour;
 
         public static Random rand = new Random();
 
-        public Ball(int _x, int _y, int _xSpeed, int _ySpeed, int _ballSize)
+        public Ball(double _x, double _y, double _xSpeed, double _ySpeed, double _ballSize)
         {
             x = _x;
             y = _y;
@@ -29,7 +29,7 @@ namespace BrickBreaker
         public bool BlockCollision(Block b)
         {
             Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
-            Rectangle ballRec = new Rectangle(x, y, size, size);
+            Rectangle ballRec = new Rectangle(Convert.ToInt32(x), Convert.ToInt32(y), Convert.ToInt32(size), Convert.ToInt32(size));
 
             //if (ballRec.IntersectsWith(blockRec))
             //{
@@ -42,28 +42,32 @@ namespace BrickBreaker
                 if (ySpeed < 0 && (blockRec.Bottom >= ballRec.Top) && (ballRec.Top <= blockRec.Bottom))
                 {
                     ySpeed *= -1;
+                    return true;
                 }
                 else if (ySpeed > 0 && (blockRec.Bottom <= ballRec.Top) && (ballRec.Bottom >= blockRec.Top))
                 {
                     ySpeed *= -1;
+                    return true;
                 }
                 else if(xSpeed < 0)
                 {
                     xSpeed *= -1;
+                    return true;
                 }
                 else if (xSpeed > 0)
                 {
                     xSpeed *= -1;
+                    return true;
                 }
             }
 
 
-            return blockRec.IntersectsWith(ballRec);
+            return false;
         }
 
         public void PaddleCollision(Paddle p)
         {
-            Rectangle ballRec = new Rectangle(x, y, size, size);
+            Rectangle ballRec = new Rectangle(Convert.ToInt32(x), Convert.ToInt32(y), Convert.ToInt32(size), Convert.ToInt32(size));
             Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
             //if (ballRec.IntersectsWith(paddleRec))
             //{

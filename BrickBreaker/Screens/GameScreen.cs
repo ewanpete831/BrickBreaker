@@ -33,6 +33,7 @@ namespace BrickBreaker
         int bigpaddletime;
         int slowtime;
         int fasttime;
+        int ballDamage;
 
         // Game values
         int lives;
@@ -47,6 +48,9 @@ namespace BrickBreaker
         List<Block> blocks = new List<Block>();
 
         public static SoundPlayer tiePlayer = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
+        public static SoundPlayer tiePlayer2 = new SoundPlayer(Properties.Resources.TIE_fighter_fire_2);
+        SoundPlayer gameOverSound = new SoundPlayer(Properties.Resources.GameoverSound);
+        SoundPlayer brickBroken = new SoundPlayer(Properties.Resources.BrickDestroy);
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -84,12 +88,17 @@ namespace BrickBreaker
             //Random randGen = new Random();
 
             //int tie1 = randGen.Next(1, 3);
+            //int tie2 = randGen.Next(1, 3);
 
             //if (tie1 == 1)
             //{
             //    SoundPlayer player = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
 
             //    player.Play();
+            //}
+            //else if (tie2 == 2 && tie1 == 1)
+            //{
+
             //}
         }
 
@@ -108,7 +117,9 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
 
-            level = 1;
+            level = 2;
+
+            ballDamage = 1;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -243,29 +254,28 @@ namespace BrickBreaker
                     if (p.id == 3)
                     {
                         slowtime += 1000;
-                        ball.xSpeed = 3;
-                        ball.ySpeed = 3;
+                        ball.xSpeed *= 0.5;
+                        ball.ySpeed *= 0.5;
                     }
                     if (p.id == 4)
                     {
                         fasttime += 1000;
-                        ball.xSpeed = 9;
-                        ball.ySpeed = 9;
+                        ball.xSpeed *= 1.5;
+                        ball.ySpeed *= 1.5;
                     }
-
                     power.Remove(p);
                     break;
                 }
             }
             if (fasttime == 1)
             {
-                ball.xSpeed = 6;
-                ball.ySpeed = 6;
+                ball.xSpeed *= 0.66;
+                ball.ySpeed *= 0.66;
             }
             if (slowtime == 1)
             {
-                ball.xSpeed = 6;
-                ball.ySpeed = 6;
+                ball.xSpeed *= 2;
+                ball.ySpeed *= 2;
             }
             if (bigpaddletime == 1)
             {
@@ -301,6 +311,7 @@ namespace BrickBreaker
 
                 if (lives == 0)
                 {
+                    gameOverSound.Play();
                     OnEnd();
                 }
             }
@@ -316,12 +327,13 @@ namespace BrickBreaker
                 {
                     if (b.lastHitTime > 5)
                     {
-                        b.hp--;
+                        b.hp -= ballDamage;
                         b.lastHitTime = 0;
                     }
                     if (b.hp < 1)
                     {
                         blocks.Remove(b);
+                        brickBroken.Play();
                         int powerupChance = randGen.Next(0, 100);
 
                         if (powerupChance > 1)
@@ -381,7 +393,7 @@ namespace BrickBreaker
         {
             ResetPaddle();
 
-            XmlReader reader = XmlReader.Create($"Resources/testLevel{level}.xml");
+            XmlReader reader = XmlReader.Create($"Resources/TestLevel{level}.xml");
 
             blocks.Clear();
             string x, y, hp, colour;
@@ -459,7 +471,7 @@ namespace BrickBreaker
             }
 
             // Draws ball
-            e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+            e.Graphics.FillRectangle(ballBrush, Convert.ToInt32(ball.x), Convert.ToInt32(ball.y), Convert.ToInt32(ball.size), Convert.ToInt32(ball.size));
         }
     }
 }
