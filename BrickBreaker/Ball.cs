@@ -6,24 +6,26 @@ namespace BrickBreaker
 {
     public class Ball
     {
-        public double x, y, xSpeed, ySpeed, size;
+        public double x, y, xSpeed, ySpeed, size, lifeTime;
         public Color colour;
 
         public static Random rand = new Random();
 
-        public Ball(double _x, double _y, double _xSpeed, double _ySpeed, double _ballSize)
+        public Ball(double _x, double _y, double _xSpeed, double _ySpeed, double _ballSize, double _lifetime)
         {
             x = _x;
             y = _y;
             xSpeed = _xSpeed;
             ySpeed = _ySpeed;
             size = _ballSize;
+            lifeTime = _lifetime;
         }
 
         public void Move()
         {
             x = x + xSpeed;
             y = y + ySpeed;
+            lifeTime--;
         }
 
         public bool BlockCollision(Block b)
