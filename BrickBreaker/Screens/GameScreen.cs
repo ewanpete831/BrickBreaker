@@ -42,7 +42,6 @@ namespace BrickBreaker
         int level;
         // Paddle and Ball objects
         Paddle paddle;
-        Ball ball;
         Random randGen = new Random();
         int paddleWidth;
 
@@ -76,7 +75,7 @@ namespace BrickBreaker
             int id = randGen.Next(1, 7);
 
 
-            powerups p = new powerups(x, y, 5, 5, id);
+            powerups p = new powerups(x, y, 3, id);
 
             power.Add(p);
         }
@@ -143,14 +142,6 @@ namespace BrickBreaker
             int paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
 
-            // setup starting ball values
-            int ballX = this.Width / 2 - 10;
-            int ballY = this.Height - paddle.height - 80;
-
-            // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = 6;
-            int ballSize = 20;
             NewBall(100000000);
 
             LoadLevel(level);
@@ -260,7 +251,11 @@ namespace BrickBreaker
                 }
             }
 
-            //check powerup collision
+            //powerups
+            //
+            //
+            //
+
             foreach (powerups p in power)
             {
                 if (p.PowerupCollision(paddle) == true)
@@ -280,13 +275,22 @@ namespace BrickBreaker
                         slowtime += 1000;
                         foreach (Ball ball in balls)
                         {
-                            if (Math.Abs(ball.ySpeed) > 3)
+                            if(ball.ySpeed < 0)
                             {
-                                foreach (Ball b in balls)
-                                {
-                                    b.xSpeed *= 0.5;
-                                    b.ySpeed *= 0.5;
-                                }
+                                ball.ySpeed = -3;
+                            }
+                            else
+                            {
+                                ball.ySpeed = 3;
+                            }
+
+                            if(ball.xSpeed < 0)
+                            {
+                                ball.xSpeed = -3;
+                            }
+                            else
+                            {
+                                ball.xSpeed = 3;
                             }
                         }
                     }
@@ -295,13 +299,22 @@ namespace BrickBreaker
                         fasttime += 1000;
                         foreach (Ball ball in balls)
                         {
-                            if (Math.Abs(ball.ySpeed) < 9)
+                            if (ball.ySpeed < 0)
                             {
-                                foreach (Ball b in balls)
-                                {
-                                    b.xSpeed *= 1.5;
-                                    b.ySpeed *= 1.5;
-                                }
+                                ball.ySpeed = -8;
+                            }
+                            else
+                            {
+                                ball.ySpeed = 8;
+                            }
+
+                            if (ball.xSpeed < 0)
+                            {
+                                ball.xSpeed = -8;
+                            }
+                            else
+                            {
+                                ball.xSpeed = 8;
                             }
                         }
                     }
@@ -312,11 +325,6 @@ namespace BrickBreaker
                     }
                     if (p.id == 6)
                     {
-                        int ballX = this.Width / 2 - 10;
-                        int ballY = this.Height - paddle.height - 80;
-                        int xSpeed = 6;
-                        int ySpeed = 6;
-                        int ballSize = 20;
                         NewBall(1000);
                     }
                     power.Remove(p);
@@ -325,12 +333,24 @@ namespace BrickBreaker
             }
             if (fasttime == 1)
             {
-                foreach (Ball ball in balls)
-                {
-                    if (ball.xSpeed < 6)
+                foreach(Ball ball in balls)
                     {
-                        ball.xSpeed *= 0.66;
-                        ball.ySpeed *= 0.66;
+                    if (ball.ySpeed < 0)
+                    {
+                        ball.ySpeed = -6;
+                    }
+                    else
+                    {
+                        ball.ySpeed = 6;
+                    }
+
+                    if (ball.xSpeed < 0)
+                    {
+                        ball.xSpeed = -6;
+                    }
+                    else
+                    {
+                        ball.xSpeed = 6;
                     }
                 }
             }
@@ -338,10 +358,22 @@ namespace BrickBreaker
             {
                 foreach (Ball ball in balls)
                 {
-                    if (ball.xSpeed < 6)
+                    if (ball.ySpeed < 0)
                     {
-                        ball.xSpeed *= 2;
-                        ball.ySpeed *= 2;
+                        ball.ySpeed = -6;
+                    }
+                    else
+                    {
+                        ball.ySpeed = 6;
+                    }
+
+                    if (ball.xSpeed < 0)
+                    {
+                        ball.xSpeed = -6;
+                    }
+                    else
+                    {
+                        ball.xSpeed = 6;
                     }
                 }
             }
@@ -355,6 +387,11 @@ namespace BrickBreaker
             }
 
             powerupsmove(); //move powerups
+            //
+            //
+            //
+
+
 
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
@@ -384,15 +421,16 @@ namespace BrickBreaker
                         lives--;
                         NewBall(100000000);
                     }
-                    if(balls.Count == 1)
-                    {
-                        balls[0].lifeTime = 100000000;
-                    }
                     break;
                 }
 
                 // Check for collision of ball with paddle, (incl. paddle movement)
                 ball.PaddleCollision(paddle);
+            }
+
+            if (balls.Count == 1)
+            {
+                balls[0].lifeTime = 100000000;
             }
 
             if (lives == 0)
@@ -434,7 +472,7 @@ namespace BrickBreaker
                             Thread.Sleep(2000);
                             pauseLabel.Text = "";
 
-                            if (level < 4)
+                            if (level < 3)
                             {
                                 level++;
                                 LoadLevel(level);
@@ -577,8 +615,16 @@ namespace BrickBreaker
             }
             foreach (Ball ball in balls)
             {
-                e.Graphics.FillRectangle(ballBrush, Convert.ToInt32(ball.x), Convert.ToInt32(ball.y), Convert.ToInt32(ball.size), Convert.ToInt32(ball.size));
-
+                if (damagetime < 1)
+                {
+                    ballBrush.Color = Color.White;
+                }
+                else
+                {
+                    ballBrush.Color = Color.Red;
+                }
+                    e.Graphics.FillRectangle(ballBrush, Convert.ToInt32(ball.x), Convert.ToInt32(ball.y), Convert.ToInt32(ball.size), Convert.ToInt32(ball.size));
+                
             }
         }
     }
