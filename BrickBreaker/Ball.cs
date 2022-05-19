@@ -84,8 +84,10 @@ namespace BrickBreaker
                 }
                 ySpeed *= -1;
 
-                GameScreen.tiePlayer.Play();
-            }
+                //GameScreen.tiePlayer.Play();
+                GameScreen.TrentSounds();
+                }            
+
         }
 
         public void WallCollision(UserControl UC)

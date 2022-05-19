@@ -43,10 +43,9 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playButton.ForeColor = System.Drawing.Color.Gold;
-            this.playButton.Location = new System.Drawing.Point(504, 326);
-            this.playButton.Margin = new System.Windows.Forms.Padding(4);
+            this.playButton.Location = new System.Drawing.Point(336, 217);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(291, 116);
+            this.playButton.Size = new System.Drawing.Size(194, 77);
             this.playButton.TabIndex = 0;
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = false;
@@ -61,10 +60,9 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.Gold;
-            this.exitButton.Location = new System.Drawing.Point(504, 574);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(4);
+            this.exitButton.Location = new System.Drawing.Point(336, 383);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(291, 116);
+            this.exitButton.Size = new System.Drawing.Size(194, 77);
             this.exitButton.TabIndex = 1;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = false;
@@ -76,10 +74,10 @@
             this.menuTitle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.menuTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuTitle.ForeColor = System.Drawing.Color.Gold;
-            this.menuTitle.Location = new System.Drawing.Point(416, 91);
+            this.menuTitle.Location = new System.Drawing.Point(277, 61);
             this.menuTitle.Margin = new System.Windows.Forms.Padding(0);
             this.menuTitle.Name = "menuTitle";
-            this.menuTitle.Size = new System.Drawing.Size(437, 231);
+            this.menuTitle.Size = new System.Drawing.Size(314, 127);
             this.menuTitle.TabIndex = 2;
             this.menuTitle.Text = " STAR\r\nWARS\r\n";
             this.menuTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -93,9 +91,10 @@
             this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.optionsButton.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optionsButton.ForeColor = System.Drawing.Color.Gold;
-            this.optionsButton.Location = new System.Drawing.Point(504, 449);
+            this.optionsButton.Location = new System.Drawing.Point(336, 299);
+            this.optionsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(291, 118);
+            this.optionsButton.Size = new System.Drawing.Size(194, 79);
             this.optionsButton.TabIndex = 3;
             this.optionsButton.Text = "Options";
             this.optionsButton.UseVisualStyleBackColor = false;
@@ -103,7 +102,7 @@
             // 
             // MenuScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::BrickBreaker.Properties.Resources.SpaceBackground;
@@ -111,9 +110,8 @@
             this.Controls.Add(this.optionsButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuScreen";
-            this.Size = new System.Drawing.Size(1281, 813);
+            this.Size = new System.Drawing.Size(854, 542);
             this.ResumeLayout(false);
 
         }
