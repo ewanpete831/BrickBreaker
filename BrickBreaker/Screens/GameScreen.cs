@@ -73,8 +73,8 @@ namespace BrickBreaker
         }
         public void ashtonpower(int x, int y)
         {
-
             int id = randGen.Next(1, 7);
+
 
             powerups p = new powerups(x, y, 5, 5, id);
 
