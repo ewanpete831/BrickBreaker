@@ -36,6 +36,7 @@ namespace BrickBreaker
         int ballDamage;
         int damagetime;
 
+
         // Game values
         int lives;
         int level;
@@ -47,6 +48,7 @@ namespace BrickBreaker
 
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
+        List<Ball> balls = new List<Ball>();
 
         public static SoundPlayer tiePlayer = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
         public static SoundPlayer tiePlayer2 = new SoundPlayer(Properties.Resources.TIE_fighter_fire_2);
@@ -71,7 +73,8 @@ namespace BrickBreaker
         }
         public void ashtonpower(int x, int y)
         {
-            int id = randGen.Next(1, 6);
+            int id = randGen.Next(1, 7);
+
 
             powerups p = new powerups(x, y, 5, 5, id);
 
@@ -140,7 +143,7 @@ namespace BrickBreaker
             int xSpeed = 6;
             int ySpeed = 6;
             int ballSize = 20;
-            ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize, 10000000000);
+            balls.Add(new Ball(ballX, ballY, xSpeed, ySpeed, ballSize, 10000000000));
 
             LoadLevel(level);
 
@@ -240,6 +243,15 @@ namespace BrickBreaker
             {
                 damagetime--;
             }
+            foreach (Ball b in balls)
+            {
+                if (b.lifeTime < 0)
+                {
+                    balls.Remove(b);
+                    break;
+                }
+            }
+
             //check powerup collision
             foreach (powerups p in power)
             {
@@ -258,25 +270,46 @@ namespace BrickBreaker
                     if (p.id == 3)
                     {
                         slowtime += 1000;
-                        if (Math.Abs(ball.ySpeed) > 3)
+                        foreach (Ball ball in balls)
                         {
-                            ball.xSpeed *= 0.5;
-                            ball.ySpeed *= 0.5;
+                            if (Math.Abs(ball.ySpeed) > 3)
+                            {
+                                foreach (Ball b in balls)
+                                {
+                                    b.xSpeed *= 0.5;
+                                    b.ySpeed *= 0.5;
+                                }
+                            }
                         }
                     }
                     if (p.id == 4)
                     {
                         fasttime += 1000;
-                        if (Math.Abs(ball.ySpeed) < 9)
+                        foreach (Ball ball in balls)
                         {
-                            ball.xSpeed *= 1.5;
-                            ball.ySpeed *= 1.5;
+                            if (Math.Abs(ball.ySpeed) < 9)
+                            {
+                                foreach (Ball b in balls)
+                                {
+                                    b.xSpeed *= 1.5;
+                                    b.ySpeed *= 1.5;
+                                }
+                            }
                         }
                     }
-                    if(p.id == 5)
+                    if (p.id == 5)
                     {
                         ballDamage = 2;
                         damagetime += 1000;
+                    }
+                    if (p.id == 6)
+                    {
+                        int ballX = this.Width / 2 - 10;
+                        int ballY = this.Height - paddle.height - 80;
+                        int xSpeed = 6;
+                        int ySpeed = 6;
+                        int ballSize = 20;
+                        balls.Add(new Ball(ballX, ballY, xSpeed, ySpeed, ballSize, 1000));
                     }
                     power.Remove(p);
                     break;
@@ -284,13 +317,25 @@ namespace BrickBreaker
             }
             if (fasttime == 1)
             {
-                ball.xSpeed *= 0.66;
-                ball.ySpeed *= 0.66;
+                foreach (Ball ball in balls)
+                {
+                    if (ball.xSpeed < 6)
+                    {
+                        ball.xSpeed *= 0.66;
+                        ball.ySpeed *= 0.66;
+                    }
+                }
             }
             if (slowtime == 1)
             {
-                ball.xSpeed *= 2;
-                ball.ySpeed *= 2;
+                foreach (Ball ball in balls)
+                {
+                    if (ball.xSpeed < 6)
+                    {
+                        ball.xSpeed *= 2;
+                        ball.ySpeed *= 2;
+                    }
+                }
             }
             if (bigpaddletime == 1)
             {
@@ -314,72 +359,80 @@ namespace BrickBreaker
             }
 
             // Move ball
-            ball.Move();
-
-            // Check for collision with top and side walls
-            ball.WallCollision(this);
-
-            // Check for ball hitting bottom of screen
-            if (ball.BottomCollision(this))
+            foreach (Ball ball in balls)
             {
-                lives--;
+                ball.Move();
 
-                // Moves the ball back to origin
-                ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-                ball.y = (this.Height - paddle.height) - 85;
 
-                if (lives == 0)
+                // Check for collision with top and side walls
+                ball.WallCollision(this);
+
+                // Check for ball hitting bottom of screen
+                if (ball.BottomCollision(this))
                 {
-                    gameOverSound.Play();
-                    OnEnd();
+                    lives--;
+
+                    // Moves the ball back to origin
+                    ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
+                    ball.y = (this.Height - paddle.height) - 85;
+
+                    if (lives == 0)
+                    {
+                        gameOverSound.Play();
+                        OnEnd();
+                    }
                 }
+
+                // Check for collision of ball with paddle, (incl. paddle movement)
+                ball.PaddleCollision(paddle);
+
             }
-
-            // Check for collision of ball with paddle, (incl. paddle movement)
-            ball.PaddleCollision(paddle);
-
             // Check if ball has collided with any blocks
-            foreach (Block b in blocks)
+            foreach (Ball ball in balls)
             {
-                b.lastHitTime++;
-                if (ball.BlockCollision(b))
+                foreach (Block b in blocks)
                 {
-                    if (b.lastHitTime > 5)
+                    b.lastHitTime++;
+
+                    if (ball.BlockCollision(b))
                     {
-                        b.hp -= ballDamage;
-                        b.lastHitTime = 0;
-                    }
-                    if (b.hp < 1)
-                    {
-                        blocks.Remove(b);
-                        brickBroken.Play();
-                        int powerupChance = randGen.Next(0, 100);
-
-                        if (powerupChance > 1)
-
+                        if (b.lastHitTime > 5)
                         {
-                            ashtonpower(b.x, b.y);
+                            b.hp -= ballDamage;
+                            b.lastHitTime = 0;
                         }
-                    }
-
-                    if (blocks.Count == 0)
-                    {
-                        pauseLabel.Text = $"Level {level} Complete!";
-                        Refresh();
-                        Thread.Sleep(2000);
-                        pauseLabel.Text = "";
-
-                        if (level < 4)
+                        if (b.hp < 1)
                         {
-                            level++;
-                            LoadLevel(level);
+                            blocks.Remove(b);
+                            brickBroken.Play();
+                            int powerupChance = randGen.Next(0, 100);
+
+                            if (powerupChance > 1)
+
+                            {
+                                ashtonpower(b.x, b.y);
+                            }
                         }
-                        else
+
+                        if (blocks.Count == 0)
                         {
-                            OnEnd();
+                            pauseLabel.Text = $"Level {level} Complete!";
+                            Refresh();
+                            Thread.Sleep(2000);
+                            pauseLabel.Text = "";
+
+                            if (level < 4)
+                            {
+                                level++;
+                                LoadLevel(level);
+                            }
+                            else
+                            {
+                                OnEnd();
+                            }
                         }
+                        break;
                     }
-                    break;
                 }
             }
             Refresh();
@@ -390,8 +443,8 @@ namespace BrickBreaker
             paddle.x = this.Width / 2;
             paddle.y = (this.Height - paddle.height) - 60;
 
-            ball.x = this.Width / 2 - 10;
-            ball.y = this.Height - paddle.height - 80;
+            balls[0].x = this.Width / 2 - 10;
+            balls[0].y = this.Height - paddle.height - 80;
         }
 
         public void OnEnd()
@@ -460,9 +513,13 @@ namespace BrickBreaker
                 {
                     e.Graphics.FillRectangle(Brushes.Gold, powers.x, powers.y, powers.size, powers.size);
                 }
-                if(powers.id == 5)
+                if (powers.id == 5)
                 {
                     e.Graphics.FillRectangle(Brushes.Green, powers.x, powers.y, powers.size, powers.size);
+                }
+                if (powers.id == 6)
+                {
+                    e.Graphics.FillRectangle(Brushes.White, powers.x, powers.y, powers.size, powers.size);
                 }
             }
 
@@ -492,9 +549,11 @@ namespace BrickBreaker
                 e.Graphics.FillRectangle(new SolidBrush(b.colour), b.x, b.y, b.width, b.height);
                 e.Graphics.DrawString($"{b.hp}", healthFont, healthBrush, b.x + 15, b.y);
             }
+            foreach (Ball ball in balls)
+            {
+                e.Graphics.FillRectangle(ballBrush, Convert.ToInt32(ball.x), Convert.ToInt32(ball.y), Convert.ToInt32(ball.size), Convert.ToInt32(ball.size));
 
-            // Draws ball
-            e.Graphics.FillRectangle(ballBrush, Convert.ToInt32(ball.x), Convert.ToInt32(ball.y), Convert.ToInt32(ball.size), Convert.ToInt32(ball.size));
+            }
         }
     }
 }
