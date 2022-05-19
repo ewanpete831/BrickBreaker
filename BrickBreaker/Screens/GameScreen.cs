@@ -76,7 +76,7 @@ namespace BrickBreaker
             int id = randGen.Next(1, 7);
 
 
-            powerups p = new powerups(x, y, 5, 5, id);
+            powerups p = new powerups(x, y, 5, 3, id);
 
             power.Add(p);
         }
@@ -267,16 +267,19 @@ namespace BrickBreaker
                 {
                     if (p.id == 1)
                     {
+                        Form1.highscore++;
                         lives++;
                     }
                     if (p.id == 2)
                     {
+                        Form1.highscore++;
                         bigpaddletime += 1000;
                         paddle.width = 130;
                         paddle.x -= 25;
                     }
                     if (p.id == 3)
                     {
+                        Form1.highscore++;
                         slowtime += 1000;
                         foreach (Ball ball in balls)
                         {
@@ -292,26 +295,29 @@ namespace BrickBreaker
                     }
                     if (p.id == 4)
                     {
+                        Form1.highscore++;
                         fasttime += 1000;
                         foreach (Ball ball in balls)
                         {
-                            if (Math.Abs(ball.ySpeed) < 9)
+                            if (Math.Abs(ball.ySpeed) < 7)
                             {
                                 foreach (Ball b in balls)
                                 {
-                                    b.xSpeed *= 1.5;
-                                    b.ySpeed *= 1.5;
+                                    b.xSpeed *= 1.2;
+                                    b.ySpeed *= 1.2;
                                 }
                             }
                         }
                     }
                     if (p.id == 5)
                     {
+                        Form1.highscore++;
                         ballDamage = 2;
                         damagetime += 1000;
                     }
                     if (p.id == 6)
                     {
+                        Form1.highscore++;
                         int ballX = this.Width / 2 - 10;
                         int ballY = this.Height - paddle.height - 80;
                         int xSpeed = 6;
@@ -327,10 +333,10 @@ namespace BrickBreaker
             {
                 foreach (Ball ball in balls)
                 {
-                    if (ball.xSpeed < 6)
+                    if (ball.xSpeed > 6)
                     {
-                        ball.xSpeed *= 0.66;
-                        ball.ySpeed *= 0.66;
+                        ball.xSpeed *= 0.8;
+                        ball.ySpeed *= 0.8;
                     }
                 }
             }
@@ -416,6 +422,7 @@ namespace BrickBreaker
                         }
                         if (b.hp < 1)
                         {
+                            Form1.highscore++;
                             blocks.Remove(b);
                             brickBroken.Play();
                             int powerupChance = randGen.Next(0, 100);
