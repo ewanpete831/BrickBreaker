@@ -213,9 +213,6 @@
     <None Include="Resources\TIE fighter fire 1.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\level3.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\testLevel3.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -236,6 +233,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\GameOverScreen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

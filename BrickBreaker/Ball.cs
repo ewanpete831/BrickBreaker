@@ -6,24 +6,26 @@ namespace BrickBreaker
 {
     public class Ball
     {
-        public double x, y, xSpeed, ySpeed, size;
+        public double x, y, xSpeed, ySpeed, size, lifeTime;
         public Color colour;
 
         public static Random rand = new Random();
 
-        public Ball(double _x, double _y, double _xSpeed, double _ySpeed, double _ballSize)
+        public Ball(double _x, double _y, double _xSpeed, double _ySpeed, double _ballSize, double _lifetime)
         {
             x = _x;
             y = _y;
             xSpeed = _xSpeed;
             ySpeed = _ySpeed;
             size = _ballSize;
+            lifeTime = _lifetime;
         }
 
         public void Move()
         {
             x = x + xSpeed;
             y = y + ySpeed;
+            lifeTime--;
         }
 
         public bool BlockCollision(Block b)
@@ -39,22 +41,17 @@ namespace BrickBreaker
             //ball bounces off of all sides of bricks 
             if (ballRec.IntersectsWith(blockRec))
             {
-                if (ySpeed < 0 && (blockRec.Bottom >= ballRec.Top) && (ballRec.Top <= blockRec.Bottom))
+                if (ySpeed < 0 && (ballRec.Top >= blockRec.Bottom - 5))
                 {
                     ySpeed *= -1;
                     return true;
                 }
-                else if (ySpeed > 0 && (blockRec.Bottom <= ballRec.Top) && (ballRec.Bottom >= blockRec.Top))
+                else if (ySpeed > 0 && (ballRec.Bottom <= blockRec.Top + 5))
                 {
                     ySpeed *= -1;
                     return true;
                 }
-                else if(xSpeed < 0)
-                {
-                    xSpeed *= -1;
-                    return true;
-                }
-                else if (xSpeed > 0)
+                else
                 {
                     xSpeed *= -1;
                     return true;
@@ -75,21 +72,22 @@ namespace BrickBreaker
             //    ySpeed *= -1;
 
             //Ball bounces off of paddle. Ball does not get stuck in paddle if hit from side
-                if (ballRec.IntersectsWith(paddleRec))
+            if (ballRec.IntersectsWith(paddleRec))
+            {
+                if (ySpeed > 0)
                 {
-                    if (ySpeed > 0)
-                    {
-                        y = p.y - p.height;
-                    }
-                    else
-                    {
-                        y = p.y + p.height;
-                    }
-                    ySpeed *= -1;
+                    y = p.y - p.height;
+                }
+                else
+                {
+                    y = p.y + p.height;
+                }
+                ySpeed *= -1;
 
                 //GameScreen.tiePlayer.Play();
                 GameScreen.TrentSounds();
                 }            
+
         }
 
         public void WallCollision(UserControl UC)
