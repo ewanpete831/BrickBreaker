@@ -86,23 +86,31 @@ namespace BrickBreaker
         }
 
 
-        public void TrentSounds()
+        public static void TrentSounds()
         {
-            //Random randGen = new Random();
+            Random randGen = new Random();
 
-            //int tie1 = randGen.Next(1, 3);
-            //int tie2 = randGen.Next(1, 3);
+            int tie1 = randGen.Next(1, 3);
+            int tie2 = randGen.Next(1, 3);
 
-            //if (tie1 == 1)
-            //{
-            //    SoundPlayer player = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
+            if (tie1 == 1)
+            {
+                SoundPlayer player = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
 
-            //    player.Play();
-            //}
-            //else if (tie2 == 2 && tie1 == 1)
-            //{
+                player.Play();
+            }
+            else if  (tie2 == 2)
+            {
+                SoundPlayer player1 = new SoundPlayer(Properties.Resources.TIE_fighter_fire_2);
 
-            //}
+                player1.Play();
+            }
+            else
+            {
+                SoundPlayer player1 = new SoundPlayer(Properties.Resources.TIE_fighter_fire_2);
+
+                player1.Play();
+            }
         }
 
         public void powerupsmove()
@@ -143,7 +151,7 @@ namespace BrickBreaker
             int xSpeed = 6;
             int ySpeed = 6;
             int ballSize = 20;
-            balls.Add(new Ball(ballX, ballY, xSpeed, ySpeed, ballSize, 10000000000));
+            NewBall(100000000);
 
             LoadLevel(level);
 
@@ -309,7 +317,7 @@ namespace BrickBreaker
                         int xSpeed = 6;
                         int ySpeed = 6;
                         int ballSize = 20;
-                        balls.Add(new Ball(ballX, ballY, xSpeed, ySpeed, ballSize, 1000));
+                        NewBall(1000);
                     }
                     power.Remove(p);
                     break;
@@ -370,22 +378,27 @@ namespace BrickBreaker
                 // Check for ball hitting bottom of screen
                 if (ball.BottomCollision(this))
                 {
-                    lives--;
-
-                    // Moves the ball back to origin
-                    ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-                    ball.y = (this.Height - paddle.height) - 85;
-
-                    if (lives == 0)
+                    balls.Remove(ball);
+                    if (balls.Count < 1)
                     {
-                        gameOverSound.Play();
-                        OnEnd();
+                        lives--;
+                        NewBall(100000000);
                     }
+                    if(balls.Count == 1)
+                    {
+                        balls[0].lifeTime = 100000000;
+                    }
+                    break;
                 }
 
                 // Check for collision of ball with paddle, (incl. paddle movement)
                 ball.PaddleCollision(paddle);
+            }
 
+            if (lives == 0)
+            {
+                gameOverSound.Play();
+                OnEnd();
             }
             // Check if ball has collided with any blocks
             foreach (Ball ball in balls)
@@ -436,6 +449,19 @@ namespace BrickBreaker
                 }
             }
             Refresh();
+        }
+        private void NewBall(int lifeTime)
+        {
+            // setup starting ball values
+            int ballX = paddle.x + (paddle.width / 2);
+            int ballY = this.Height - paddle.height - 80;
+
+            // Creates a new ball
+            int xSpeed = 6;
+            int ySpeed = 6;
+            int ballSize = 20;
+
+            balls.Add(new Ball(ballX, ballY, xSpeed, ySpeed, ballSize, lifeTime));
         }
 
         private void ResetPaddle()
