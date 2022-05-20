@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.playButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.score = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // title
@@ -93,16 +93,16 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
+            // score
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(370, 167);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 39);
-            this.label1.TabIndex = 5;
+            this.score.AutoSize = true;
+            this.score.BackColor = System.Drawing.Color.Transparent;
+            this.score.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.score.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.score.Location = new System.Drawing.Point(370, 167);
+            this.score.Name = "score";
+            this.score.Size = new System.Drawing.Size(0, 39);
+            this.score.TabIndex = 5;
             // 
             // GameOverScreen
             // 
@@ -110,7 +110,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::BrickBreaker.Properties.Resources.GameOverScreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.score);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.label2);
@@ -128,6 +128,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label score;
     }
 }

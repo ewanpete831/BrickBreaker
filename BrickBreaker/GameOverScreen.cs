@@ -15,6 +15,7 @@ namespace BrickBreaker
         public GameOverScreen()
         {
             InitializeComponent();
+            score.Text = Convert.ToString(Form1.highscore);
         }
 
         private void playButton_Click(object sender, EventArgs e)
