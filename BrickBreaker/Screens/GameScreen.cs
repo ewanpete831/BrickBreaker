@@ -127,7 +127,7 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
 
-            level = 1;
+            level = 2;
 
             ballDamage = 1;
 

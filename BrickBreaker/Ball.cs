@@ -30,6 +30,10 @@ namespace BrickBreaker
 
         public bool BlockCollision(Block b)
         {
+            //Random rand = new Random();
+            //int randNum = rand.Next(2, 6); 
+
+
             Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
             Rectangle ballRec = new Rectangle(Convert.ToInt32(x), Convert.ToInt32(y), Convert.ToInt32(size), Convert.ToInt32(size));
 
@@ -43,6 +47,7 @@ namespace BrickBreaker
             {
                 if (ySpeed < 0 && (ballRec.Top >= blockRec.Bottom - 5))
                 {
+                    //xSpeed = randNum;  
                     ySpeed *= -1;
                     return true;
                 }
