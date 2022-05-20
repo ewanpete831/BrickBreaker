@@ -484,7 +484,7 @@ namespace BrickBreaker
                             Thread.Sleep(2000);
                             pauseLabel.Text = "";
 
-                            if (level < 3)
+                            if (level < 2)
                             {
                                 level++;
                                 LoadLevel(level);
