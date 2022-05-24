@@ -224,6 +224,8 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+
+            scoreplay.Text = Convert.ToString(Form1.highscore);
             if (fasttime > 0)
             {
                 fasttime--;
