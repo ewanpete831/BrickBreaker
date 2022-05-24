@@ -35,6 +35,7 @@ namespace BrickBreaker
         int fasttime;
         int ballDamage;
         int damagetime;
+        int standardBallSpeed = 6;
 
 
         // Game values
@@ -89,25 +90,13 @@ namespace BrickBreaker
             Random randGen = new Random();
 
             int tie1 = randGen.Next(1, 3);
-            int tie2 = randGen.Next(1, 3);
-
-            if (tie1 == 1)
+            if(tie1 == 1)
             {
-                SoundPlayer player = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
-
-                player.Play();
-            }
-            else if  (tie2 == 2)
-            {
-                SoundPlayer player1 = new SoundPlayer(Properties.Resources.TIE_fighter_fire_2);
-
-                player1.Play();
+                tiePlayer.Play();
             }
             else
             {
-                SoundPlayer player1 = new SoundPlayer(Properties.Resources.TIE_fighter_fire_2);
-
-                player1.Play();
+                tiePlayer2.Play();
             }
         }
 
@@ -126,7 +115,7 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
 
-            level = 2;
+            level = 0;
 
             ballDamage = 1;
 
@@ -141,7 +130,7 @@ namespace BrickBreaker
             int paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
 
-            NewBall(100000000);
+            NewBall();
 
             LoadLevel(level);
 
@@ -243,14 +232,6 @@ namespace BrickBreaker
             {
                 damagetime--;
             }
-            foreach (Ball b in balls)
-            {
-                if (b.lifeTime < 0)
-                {
-                    balls.Remove(b);
-                    break;
-                }
-            }
 
             //powerups
             //
@@ -332,13 +313,8 @@ namespace BrickBreaker
                     if (p.id == 6)
                     {
                         Form1.highscore++;
-                        int ballX = this.Width / 2 - 10;
-                        int ballY = this.Height - paddle.height - 80;
-                        int xSpeed = 6;
-                        int ySpeed = 6;
-                        int ballSize = 20;
 
-                        NewBall(1000);
+                        NewBall();
                     }
                     power.Remove(p);
                     break;
@@ -404,8 +380,6 @@ namespace BrickBreaker
             //
             //
 
-
-
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -432,18 +406,13 @@ namespace BrickBreaker
                     if (balls.Count < 1)
                     {
                         lives--;
-                        NewBall(100000000);
+                        NewBall();
                     }
                     break;
                 }
 
                 // Check for collision of ball with paddle, (incl. paddle movement)
                 ball.PaddleCollision(paddle);
-            }
-
-            if (balls.Count == 1)
-            {
-                balls[0].lifeTime = 100000000;
             }
 
             if (lives == 0)
@@ -460,7 +429,7 @@ namespace BrickBreaker
 
                     if (ball.BlockCollision(b))
                     {
-                        if (b.lastHitTime > 5)
+                        if (b.lastHitTime > 10)
                         {
                             b.hp -= ballDamage;
                             b.lastHitTime = 0;
@@ -502,18 +471,16 @@ namespace BrickBreaker
             }
             Refresh();
         }
-        private void NewBall(int lifeTime)
+        private void NewBall()
         {
             // setup starting ball values
             int ballX = paddle.x + (paddle.width / 2);
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = 6;
             int ballSize = 20;
 
-            balls.Add(new Ball(ballX, ballY, xSpeed, ySpeed, ballSize, lifeTime));
+            balls.Add(new Ball(ballX, ballY, standardBallSpeed, standardBallSpeed, ballSize));
         }
 
         private void ResetPaddle()
