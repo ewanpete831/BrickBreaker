@@ -24,7 +24,7 @@ namespace BrickBreaker
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown;
+        public static Boolean leftArrowDown, rightArrowDown;
 
         //extra bools
         bool paused = false;

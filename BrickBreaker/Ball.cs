@@ -23,8 +23,8 @@ namespace BrickBreaker
 
         public void Move()
         {
-            x = x + xSpeed;
-            y = y + ySpeed;
+            x += xSpeed;
+            y += ySpeed;
             lifeTime--;
         }
 
