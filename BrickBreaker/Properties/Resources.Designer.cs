@@ -119,39 +119,7 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;Bricks&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;-5&lt;/x&gt;
-        ///		&lt;y&gt;282&lt;/y&gt;
-        ///		&lt;hp&gt;3&lt;/hp&gt;
-        ///		&lt;colour&gt;SpringGreen&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;-8&lt;/x&gt;
-        ///		&lt;y&gt;217&lt;/y&gt;
-        ///		&lt;hp&gt;2&lt;/hp&gt;
-        ///		&lt;colour&gt;DimGray&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;-8&lt;/x&gt;
-        ///		&lt;y&gt;343&lt;/y&gt;
-        ///		&lt;hp&gt;2&lt;/hp&gt;
-        ///		&lt;colour&gt;DimGray&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;48&lt;/x&gt;
-        ///		&lt;y&gt;335&lt;/y&gt;
-        ///		&lt;hp&gt;2&lt;/hp&gt;
-        ///		&lt;colour&gt;DimGray&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;48&lt;/x&gt;
-        ///		&lt;y&gt;224&lt;/y&gt;
-        ///		&lt;hp&gt;2&lt;/hp&gt;
-        ///		&lt;colour&gt;DimGray&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt; [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Bricks&gt;&lt;Brick&gt;&lt;x&gt;1&lt;/x&gt;&lt;y&gt;139&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;SpringGreen&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;-2&lt;/x&gt;&lt;y&gt;74&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;DimGray&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;-2&lt;/x&gt;&lt;y&gt;200&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;DimGray&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;54&lt;/x&gt;&lt;y&gt;192&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;DimGray&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;54&lt;/x&gt;&lt;y&gt;81&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;DimGray&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;706&lt;/x&gt;&lt;y&gt;139&lt;/y&gt;&lt;hp&gt;1&lt;/hp&gt;&lt;colour&gt;Red&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;110&lt;/x&gt;&lt;y&gt;170&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;DimGray&lt;/colour [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string level0 {
             get {
@@ -557,6 +525,16 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap Tie_Fighter_View {
             get {
                 object obj = ResourceManager.GetObject("Tie_Fighter_View", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Victory_image {
+            get {
+                object obj = ResourceManager.GetObject("Victory_image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
