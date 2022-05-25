@@ -119,7 +119,6 @@ namespace BrickBreaker
                 }
                 ySpeed *= -1;
 
-
                 //GameScreen.tiePlayer.Play();
                 GameScreen.TrentSounds();
             }

@@ -117,6 +117,8 @@ namespace BrickBreaker
 
             level = 0;
 
+            Form1.highscore = 0;
+
             ballDamage = 1;
 
             //set all button presses to false.
