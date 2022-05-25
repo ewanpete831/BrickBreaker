@@ -134,7 +134,9 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
 
-            level = 0;
+            level = 4;
+
+            Form1.win = false;
 
             Form1.highscore = 0;
 
@@ -485,6 +487,7 @@ namespace BrickBreaker
                             }
                             else
                             {
+                                Form1.win = true;
                                 OnEnd();
                             }
                         }
