@@ -46,6 +46,8 @@ namespace BrickBreaker
         Random randGen = new Random();
         int paddleWidth;
 
+        public static int soundtimer = 0;
+
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
         List<Ball> balls = new List<Ball>();
@@ -53,7 +55,7 @@ namespace BrickBreaker
         public static SoundPlayer tiePlayer = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
         public static SoundPlayer tiePlayer2 = new SoundPlayer(Properties.Resources.TIE_fighter_fire_2);
         SoundPlayer gameOverSound = new SoundPlayer(Properties.Resources.GameoverSound);
-        SoundPlayer brickBroken = new SoundPlayer(Properties.Resources.BrickDestroy);
+        public static SoundPlayer brickBroken = new SoundPlayer(Properties.Resources.BrickDestroy);
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -85,18 +87,30 @@ namespace BrickBreaker
         }
 
 
-        public static void TrentSounds()
+        public static void TrentSounds(string Sound)
         {
-            Random randGen = new Random();
+            if (soundtimer < 1)
+            {
+                if (Sound == "Tie")
+                {
+                    Random randGen = new Random();
 
-            int tie1 = randGen.Next(1, 3);
-            if(tie1 == 1)
-            {
-                tiePlayer.Play();
-            }
-            else
-            {
-                tiePlayer2.Play();
+                    int tie1 = randGen.Next(1, 3);
+                    if (tie1 == 1)
+                    {
+                        tiePlayer.Play();
+                    }
+                    else
+                    {
+                        tiePlayer2.Play();
+                    }
+                    soundtimer = 35;
+                }
+                if (Sound == "block")
+                {
+                    brickBroken.Play();
+                    soundtimer = 35;
+                }
             }
         }
 
@@ -215,6 +229,7 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            soundtimer--;
 
             scoreplay.Text = Convert.ToString(Form1.highscore);
             if (fasttime > 0)
@@ -440,7 +455,7 @@ namespace BrickBreaker
                         {
                             Form1.highscore++;
                             blocks.Remove(b);
-                            brickBroken.Play();
+                            TrentSounds("block");
                             int powerupChance = randGen.Next(0, 100);
 
                             if (powerupChance > 1)
@@ -452,7 +467,7 @@ namespace BrickBreaker
 
                         if (blocks.Count == 0)
                         {
-                            pauseLabel.Text = $"Level {level} Complete!";
+                            pauseLabel.Text = $"Level {level + 1} Complete!";
                             Refresh();
                             Thread.Sleep(2000);
                             pauseLabel.Text = "";
