@@ -78,7 +78,8 @@ namespace BrickBreaker
                 {
                     y = p.y + p.height;
                 }
-                if (ySpeed > 0)
+
+                if (Math.Abs(ySpeed) > 0)
                 {
                     if (GameScreen.rightArrowDown)
                     {
@@ -96,23 +97,23 @@ namespace BrickBreaker
                             ySpeed++;
                         }
                     }
-                }
-                else
-                {
-                    if (GameScreen.rightArrowDown)
+                    else
                     {
-                        if (Math.Abs(xSpeed) > 4)
+                        if (GameScreen.rightArrowDown)
                         {
-                            xSpeed--;
-                            ySpeed++;
+                            if (Math.Abs(xSpeed) > 4)
+                            {
+                                xSpeed++;
+                                ySpeed--;
+                            }
                         }
-                    }
-                    else if (GameScreen.leftArrowDown)
-                    {
-                        if (Math.Abs(ySpeed) > 4)
+                        else if (GameScreen.leftArrowDown)
                         {
-                            xSpeed++;
-                            ySpeed--;
+                            if (Math.Abs(ySpeed) > 4)
+                            {
+                                xSpeed--;
+                                ySpeed++;
+                            }
                         }
                     }
                 }
