@@ -256,12 +256,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\level0.xml">
+    <None Include="Resources\level4.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\level4.xml">
+    <None Include="Resources\Tie Fighter View.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level0.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

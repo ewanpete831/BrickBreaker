@@ -70,8 +70,6 @@ namespace BrickBreaker
         {
             InitializeComponent();
             OnStart();
-            TrentImages();
-
         }
         public void ashtonpower(int x, int y)
         {
@@ -83,7 +81,14 @@ namespace BrickBreaker
         }
         public void TrentImages()
         {
-            BackgroundImage = Properties.Resources.DeathStar4;
+            if (level < 2 || level > 3)
+            {
+                BackgroundImage = Properties.Resources.DeathStar4;
+            }
+            else
+            {
+                BackgroundImage = Properties.Resources.Tie_Fighter_View;
+            }
         }
 
 
@@ -468,11 +473,12 @@ namespace BrickBreaker
                         if (blocks.Count == 0)
                         {
                             pauseLabel.Text = $"Level {level + 1} Complete!";
+                            lives++;
                             Refresh();
                             Thread.Sleep(2000);
                             pauseLabel.Text = "";
 
-                            if (level < 2)
+                            if (level < 4)
                             {
                                 level++;
                                 LoadLevel(level);
@@ -525,6 +531,7 @@ namespace BrickBreaker
 
         public void LoadLevel(int level)
         {
+            TrentImages();
             ResetPaddle();
 
             XmlReader reader = XmlReader.Create($"Resources/Level{level}.xml");

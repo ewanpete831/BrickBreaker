@@ -550,5 +550,15 @@ namespace BrickBreaker.Properties {
                 return ResourceManager.GetStream("TIE_fighter_fire_2", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tie_Fighter_View {
+            get {
+                object obj = ResourceManager.GetObject("Tie_Fighter_View", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
