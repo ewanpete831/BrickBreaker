@@ -61,16 +61,6 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap BB_Menu_Screen__1_ {
-            get {
-                object obj = ResourceManager.GetObject("BB_Menu_Screen__1_", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream BrickDestroy {
@@ -119,39 +109,7 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;Bricks&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;-5&lt;/x&gt;
-        ///		&lt;y&gt;282&lt;/y&gt;
-        ///		&lt;hp&gt;3&lt;/hp&gt;
-        ///		&lt;colour&gt;SpringGreen&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;-8&lt;/x&gt;
-        ///		&lt;y&gt;217&lt;/y&gt;
-        ///		&lt;hp&gt;2&lt;/hp&gt;
-        ///		&lt;colour&gt;DimGray&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;-8&lt;/x&gt;
-        ///		&lt;y&gt;343&lt;/y&gt;
-        ///		&lt;hp&gt;2&lt;/hp&gt;
-        ///		&lt;colour&gt;DimGray&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;48&lt;/x&gt;
-        ///		&lt;y&gt;335&lt;/y&gt;
-        ///		&lt;hp&gt;2&lt;/hp&gt;
-        ///		&lt;colour&gt;DimGray&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;48&lt;/x&gt;
-        ///		&lt;y&gt;224&lt;/y&gt;
-        ///		&lt;hp&gt;2&lt;/hp&gt;
-        ///		&lt;colour&gt;DimGray&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt; [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Bricks&gt;&lt;Brick&gt;&lt;x&gt;1&lt;/x&gt;&lt;y&gt;139&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;SpringGreen&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;-2&lt;/x&gt;&lt;y&gt;74&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;DimGray&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;-2&lt;/x&gt;&lt;y&gt;200&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;DimGray&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;54&lt;/x&gt;&lt;y&gt;192&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;DimGray&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;54&lt;/x&gt;&lt;y&gt;81&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;DimGray&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;706&lt;/x&gt;&lt;y&gt;139&lt;/y&gt;&lt;hp&gt;1&lt;/hp&gt;&lt;colour&gt;Red&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;110&lt;/x&gt;&lt;y&gt;170&lt;/y&gt;&lt;hp&gt;2&lt;/hp&gt;&lt;colour&gt;DimGray&lt;/colour [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string level0 {
             get {
@@ -329,36 +287,6 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MenuScreen2 {
-            get {
-                object obj = ResourceManager.GetObject("MenuScreen2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MenuTitle {
-            get {
-                object obj = ResourceManager.GetObject("MenuTitle", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MenuTitle1 {
-            get {
-                object obj = ResourceManager.GetObject("MenuTitle1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap SpaceBackground {
             get {
                 object obj = ResourceManager.GetObject("SpaceBackground", resourceCulture);
@@ -378,158 +306,10 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Star_Wars_Logo_svg {
-            get {
-                object obj = ResourceManager.GetObject("Star_Wars_Logo_svg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap starwars2 {
             get {
                 object obj = ResourceManager.GetObject("starwars2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap starwarsnoBG__1_ {
-            get {
-                object obj = ResourceManager.GetObject("starwarsnoBG__1_", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;Bricks&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;395&lt;/x&gt;
-        ///		&lt;y&gt;249&lt;/y&gt;
-        ///		&lt;hp&gt;3&lt;/hp&gt;
-        ///		&lt;colour&gt;YellowGreen&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;395&lt;/x&gt;
-        ///		&lt;y&gt;135&lt;/y&gt;
-        ///		&lt;hp&gt;2&lt;/hp&gt;
-        ///		&lt;colour&gt;Goldenrod&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;395&lt;/x&gt;
-        ///		&lt;y&gt;45&lt;/y&gt;
-        ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///&lt;/Bricks&gt;.
-        /// </summary>
-        internal static string testLevel1 {
-            get {
-                return ResourceManager.GetString("testLevel1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;Bricks&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;232&lt;/x&gt;
-        ///		&lt;y&gt;135&lt;/y&gt;
-        ///		&lt;hp&gt;3&lt;/hp&gt;
-        ///		&lt;colour&gt;YellowGreen&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;395&lt;/x&gt;
-        ///		&lt;y&gt;135&lt;/y&gt;
-        ///		&lt;hp&gt;2&lt;/hp&gt;
-        ///		&lt;colour&gt;Goldenrod&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;395&lt;/x&gt;
-        ///		&lt;y&gt;270&lt;/y&gt;
-        ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///&lt;/Bricks&gt;.
-        /// </summary>
-        internal static string testLevel2 {
-            get {
-                return ResourceManager.GetString("testLevel2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;Bricks&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;232&lt;/x&gt;
-        ///		&lt;y&gt;135&lt;/y&gt;
-        ///		&lt;hp&gt;3&lt;/hp&gt;
-        ///		&lt;colour&gt;YellowGreen&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;395&lt;/x&gt;
-        ///		&lt;y&gt;135&lt;/y&gt;
-        ///		&lt;hp&gt;2&lt;/hp&gt;
-        ///		&lt;colour&gt;Goldenrod&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;607&lt;/x&gt;
-        ///		&lt;y&gt;318&lt;/y&gt;
-        ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///&lt;/Bricks&gt;.
-        /// </summary>
-        internal static string testLevel3 {
-            get {
-                return ResourceManager.GetString("testLevel3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;Bricks&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;248&lt;/x&gt;
-        ///		&lt;y&gt;275&lt;/y&gt;
-        ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;468&lt;/x&gt;
-        ///		&lt;y&gt;361&lt;/y&gt;
-        ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;548&lt;/x&gt;
-        ///		&lt;y&gt;208&lt;/y&gt;
-        ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;565&lt;/x&gt;
-        ///		&lt;y&gt;126&lt;/y&gt;
-        ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick&gt;
-        ///		&lt;x&gt;620&lt;/x&gt;
-        ///		&lt;y&gt;298&lt;/y&gt;
-        ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;DarkRed&lt;/colour&gt;
-        ///	&lt;/Brick&gt;
-        ///	&lt;Brick [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string testlevel4 {
-            get {
-                return ResourceManager.GetString("testlevel4", resourceCulture);
             }
         }
         
@@ -548,6 +328,26 @@ namespace BrickBreaker.Properties {
         internal static System.IO.UnmanagedMemoryStream TIE_fighter_fire_2 {
             get {
                 return ResourceManager.GetStream("TIE_fighter_fire_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tie_Fighter_View {
+            get {
+                object obj = ResourceManager.GetObject("Tie_Fighter_View", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Victory_image {
+            get {
+                object obj = ResourceManager.GetObject("Victory_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

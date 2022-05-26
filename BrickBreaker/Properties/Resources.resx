@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BB_Menu_Screen__1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BB Menu Screen (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="BrickDestroy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mixkit-shot-light-explosion-1682 (1).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -151,46 +148,25 @@
   <data name="level4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\level4.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="MenuScreen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuScreen2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MenuTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuTitle.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MenuTitle1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuTitle1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="SpaceBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpaceBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="starwars2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\starwars2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="starwarsnoBG__1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\starwarsnoBG (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Star_Wars_Logo_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Star_Wars_Logo.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Star_Wars__The_Imperial_March__Darth_Vader_s_Theme_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Star Wars- The Imperial March (Darth Vader_s Theme).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="testLevel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\testLevel1.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="testLevel2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\testLevel2.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="testLevel3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\testLevel3.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="testlevel4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\testlevel4.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="TIE_fighter_fire_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TIE fighter fire 1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TIE_fighter_fire_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TIE fighter fire 2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Tie_Fighter_View" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tie Fighter View.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Victory_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Victory image.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

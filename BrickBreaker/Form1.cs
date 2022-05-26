@@ -14,6 +14,7 @@ namespace BrickBreaker
     public partial class Form1 : Form
     {
         public static int highscore;
+        public static bool win;
         public Form1()
         {
             InitializeComponent();

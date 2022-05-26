@@ -46,6 +46,8 @@ namespace BrickBreaker
         Random randGen = new Random();
         int paddleWidth;
 
+        public static int soundtimer = 0;
+
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
         List<Ball> balls = new List<Ball>();
@@ -53,7 +55,7 @@ namespace BrickBreaker
         public static SoundPlayer tiePlayer = new SoundPlayer(Properties.Resources.TIE_fighter_fire_1);
         public static SoundPlayer tiePlayer2 = new SoundPlayer(Properties.Resources.TIE_fighter_fire_2);
         SoundPlayer gameOverSound = new SoundPlayer(Properties.Resources.GameoverSound);
-        SoundPlayer brickBroken = new SoundPlayer(Properties.Resources.BrickDestroy);
+        public static SoundPlayer brickBroken = new SoundPlayer(Properties.Resources.BrickDestroy);
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -68,39 +70,56 @@ namespace BrickBreaker
         {
             InitializeComponent();
             OnStart();
-            TrentImages();
-
         }
-        public void ashtonpower(int x, int y)
+        public void ashtonpower(int x, int y) // pick a random powerup and spawn it
         {
-            int id = randGen.Next(1, 7);
+            int id = randGen.Next(1, 7); 
 
             powerups p = new powerups(x, y, 3, id);
 
             power.Add(p);
         }
-        public void TrentImages()
+        public void TrentImages() // shows correct background images
         {
-            BackgroundImage = Properties.Resources.DeathStar4;
-        }
-
-
-        public static void TrentSounds()
-        {
-            Random randGen = new Random();
-
-            int tie1 = randGen.Next(1, 3);
-            if(tie1 == 1)
+            if (level < 2 || level > 3)
             {
-                tiePlayer.Play();
+                BackgroundImage = Properties.Resources.DeathStar4;
             }
             else
             {
-                tiePlayer2.Play();
+                BackgroundImage = Properties.Resources.Tie_Fighter_View;
             }
         }
 
-        public void powerupsmove()
+
+        public static void TrentSounds(string Sound) // sound effects
+        {
+            if (soundtimer < 1)
+            {
+                if (Sound == "Tie")
+                {
+                    Random randGen = new Random();
+
+                    int tie1 = randGen.Next(1, 3);
+                    if (tie1 == 1)
+                    {
+                        tiePlayer.Play();
+                    }
+                    else
+                    {
+                        tiePlayer2.Play();
+                    }
+                    soundtimer = 35;
+                }
+                if (Sound == "block")
+                {
+                    brickBroken.Play();
+                    soundtimer = 35;
+                }
+            }
+        }
+
+        public void powerupsmove() // move each powerup
         {
             foreach (powerups pow in power)
             {
@@ -115,7 +134,10 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
 
+            //reset level and highscore
             level = 0;
+
+            Form1.win = false;
 
             Form1.highscore = 0;
 
@@ -132,8 +154,10 @@ namespace BrickBreaker
             int paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
 
+            //spawn new ball
             NewBall();
 
+            //load first level
             LoadLevel(level);
 
 
@@ -215,9 +239,10 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            soundtimer--; // timer for sound effects
 
-            scoreplay.Text = Convert.ToString(Form1.highscore);
-            if (fasttime > 0)
+            //reduce all powerup timers
+            if (fasttime > 0) 
             {
                 fasttime--;
             }
@@ -240,23 +265,23 @@ namespace BrickBreaker
             //
             //
 
-            foreach (powerups p in power)
+            foreach (powerups p in power) // check for powerup collision
             {
                 if (p.PowerupCollision(paddle) == true)
                 {
-                    if (p.id == 1)
+                    if (p.id == 1) // life powerup
                     {
                         Form1.highscore++;
                         lives++;
                     }
-                    if (p.id == 2)
+                    if (p.id == 2) // expand paddle
                     {
                         Form1.highscore++;
                         bigpaddletime += 1000;
                         paddle.width = 130;
                         paddle.x -= 25;
                     }
-                    if (p.id == 3)
+                    if (p.id == 3) // slow ball
                     {
                         Form1.highscore++;
                         slowtime += 1000;
@@ -281,7 +306,7 @@ namespace BrickBreaker
                             }
                         }
                     }
-                    if (p.id == 4)
+                    if (p.id == 4) // fast ball
                     {
                         Form1.highscore++;
                         fasttime += 1000;
@@ -306,13 +331,13 @@ namespace BrickBreaker
                             }
                         }
                     }
-                    if (p.id == 5)
+                    if (p.id == 5) // double damage
                     {
                         Form1.highscore++;
                         ballDamage = 2;
                         damagetime += 1000;
                     }
-                    if (p.id == 6)
+                    if (p.id == 6) // extra ball
                     {
                         Form1.highscore++;
 
@@ -322,7 +347,10 @@ namespace BrickBreaker
                     break;
                 }
             }
-            if (fasttime == 1)
+
+            //powerups expire
+
+            if (fasttime == 1) // fast ball
             {
                 foreach(Ball ball in balls)
                     {
@@ -345,7 +373,7 @@ namespace BrickBreaker
                     }
                 }
             }
-            if (slowtime == 1)
+            if (slowtime == 1) // slow ball
             {
                 foreach (Ball ball in balls)
                 {
@@ -368,11 +396,11 @@ namespace BrickBreaker
                     }
                 }
             }
-            if (bigpaddletime == 1)
+            if (bigpaddletime == 1) // big paddle
             {
                 paddle.width = paddleWidth;
             }
-            if (damagetime == 1)
+            if (damagetime == 1) // double damage
             {
                 ballDamage = 1;
             }
@@ -417,11 +445,12 @@ namespace BrickBreaker
                 ball.PaddleCollision(paddle);
             }
 
-            if (lives == 0)
+            if (lives == 0) // end game at 0 lives
             {
                 gameOverSound.Play();
                 OnEnd();
             }
+
             // Check if ball has collided with any blocks
             foreach (Ball ball in balls)
             {
@@ -440,30 +469,32 @@ namespace BrickBreaker
                         {
                             Form1.highscore++;
                             blocks.Remove(b);
-                            brickBroken.Play();
+                            TrentSounds("block");
                             int powerupChance = randGen.Next(0, 100);
 
-                            if (powerupChance > 1)
+                            if (powerupChance > 30) // spawn powerups
 
                             {
                                 ashtonpower(b.x, b.y);
                             }
                         }
 
-                        if (blocks.Count == 0)
+                        if (blocks.Count == 0) // level cleared
                         {
-                            pauseLabel.Text = $"Level {level} Complete!";
+                            pauseLabel.Text = $"Level {level + 1} Complete!";
+                            lives++;
                             Refresh();
                             Thread.Sleep(2000);
                             pauseLabel.Text = "";
 
-                            if (level < 2)
+                            if (level < 4)
                             {
                                 level++;
                                 LoadLevel(level);
                             }
                             else
                             {
+                                Form1.win = true;
                                 OnEnd();
                             }
                         }
@@ -510,6 +541,7 @@ namespace BrickBreaker
 
         public void LoadLevel(int level)
         {
+            TrentImages();
             ResetPaddle();
 
             XmlReader reader = XmlReader.Create($"Resources/Level{level}.xml");
@@ -541,7 +573,10 @@ namespace BrickBreaker
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
-        {   //draws power up 
+        {   
+            scoreplay.Text = Convert.ToString(Form1.highscore); // shows score
+
+            //draws power up 
             foreach (powerups powers in power)
             {
                 if (powers.id == 1)
@@ -571,9 +606,10 @@ namespace BrickBreaker
             }
 
             // Draws paddle
-            if (0 < bigpaddletime && bigpaddletime < 100)
+
+            if (0 < bigpaddletime && bigpaddletime < 100) // flash paddle when time is low
             {
-                int opacity = 255 / ((bigpaddletime % 50) + 1);
+                int opacity = 255 / ((bigpaddletime % 50) + 3);
                 if (opacity < 10)
                 {
                     opacity += 20;

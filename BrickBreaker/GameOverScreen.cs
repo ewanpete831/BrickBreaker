@@ -15,6 +15,16 @@ namespace BrickBreaker
         public GameOverScreen()
         {
             InitializeComponent();
+            if(Form1.win == true)
+            {
+                title.Text = "You Win!";
+                BackgroundImage = Properties.Resources.Victory_image;
+            }
+            else
+            {
+                title.Text = "Game Over";
+                BackgroundImage = Properties.Resources.GameOverScreen;
+            }
             score.Text = Convert.ToString(Form1.highscore);
         }
 
